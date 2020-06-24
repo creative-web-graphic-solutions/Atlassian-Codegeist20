@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <title>IT Infrastructure Management - CIO's Desk</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/dashboardstyle.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <style>
+     *{margin: 0px; padding: 0px; font-size: 15px; list-style: none}
+        html, body{ background-color: #16F5E8; width: 100%; height:100%; position: relative;}
+        .header{ height:20%; background:blue; position: relative;}
+        .page-footer{
+        position: fixed;
+  margin-left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: blue;
+  color: white;
+/*  text-align: center;*/
+  padding-left: 14%;            
+    }    
+
+.alert {
+  padding: 20px;
+  background-color: red;
+  color: white;
+}
+
+
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+        
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+    
+.messages{
+    font-size:18px;
+    color: white;
+    height: 50px;           
+}        
+        
+</style>        
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+function appendText() {
+    
+  var title = $("#title").val();
+  var content = $("#content").val();
+  var type = $("#type").val();
+  var container = document.getElementsByClassName("content-wrapper");    
+  var section =document.getElementsByClassName("results");    
+  var markup = "<div class='results'><button class='closebtn' onclick='closeAlert(this)'>X</button>&nbsp;&nbsp;" + type + ' ' + title + ' ' + content + "</div>";
+
+  if (type === 'success') {
+    $('.messages').css({
+      "background-color": "green"
+    });
+  } else if (type === 'warning') {
+    $('.messages').css({
+      "background-color": "yellow"
+    });
+  } else if (type === 'error') {
+    $('.messages').css({
+      "background-color": "red"
+    });
+  } else if (type === 'info') {
+    $('.messages').css({
+      "background-color": "blue"
+    });
+  }
+  $(".messages").html(markup);
+
+  container.appendChild(section.cloneNode(true));
+}
+
+function closeAlert(_this) {
+  $(_this).parent().remove()
+}
+</script>         	
+	
+</head>
+<body>
+	<header class="cd-main-header">
+<!--		<a href="#0" class="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></a>-->
+		<a id="logo-container" href="index.html" class="brand-logo" style="color: white">IIM Logo</a>
+		<div class="cd-search is-hidden">
+			<form action="#0">
+				<input type="search" placeholder="Search..." >
+			</form>
+		</div> <!-- cd-search -->
+
+		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+		<nav class="cd-nav">
+			<ul class="cd-top-nav">
+				<li><a href="email.html">Mail</a></li>
+				<li><a href="#0">Notification</a></li>
+				<li class="has-children account">
+					<a href="#0">
+						<img src="img/cd-avatar.png" alt="avatar">
+						My Profile
+					</a>
+
+					<ul>
+
+						<li><a href="#0">Edit Account</a></li>
+						<li><a href="#0">Settings</a></li>
+						<li><a href="#0">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+    
+    
+       
+    
+        
+	</header> <!-- .cd-main-header -->
+
+<div class="container">    
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">Main</li>
+                	<li class="has-children overview">
+					<a href="#0">Employee</a>
+					
+					<ul>
+						<li><a href="#0">Add</a></li>
+						
+					</ul>
+				</li>
+				<li class="has-children overview">
+					<a href="#0">Resources</a>
+					
+					<ul>
+						<li><a href="#0">Projects</a></li>
+						<li><a href="#0">Peoples</a></li>
+						<li><a href="#0">Equipments</a></li>
+                        <li><a href="#0">Schdules</a></li>
+					</ul>
+				</li>
+			    <li class="has-children overview">
+					<a href="#0">User Management</a>
+					
+					<ul>
+						<li><a href="#0">Add New User</a></li>
+				   </ul>
+				</li>
+                <li class="has-children overview">
+					<a href="#0">Groups Management</a>
+					
+					<ul>
+						<li><a href="#0">Create New Group</a></li>
+						
+					</ul>
+				</li>
+                <li class="has-children overview">
+					<a href="#0">Apps & Integration</a>
+					
+					<ul>
+						<li><a href="#0">Installed Apps</a></li>
+						
+					</ul>
+				</li>
+
+				<li class="has-children overview">
+					<a href="#0">My Contacts</a>
+					
+					<ul>
+						<li><a href="#0">Supplier</a></li>
+						<li><a href="#0">Vendor</a></li>
+						<li><a href="#0">Partnership</a></li>
+                        <li><a href="#0">B2B</a></li>                        
+					</ul>
+				</li>
+			
+            <li class="has-children overview">
+					<a href="#0">Ticketing & Support</a><ul>
+                <li></li>
+                </ul>			
+					
+				</li>
+            <li class="has-children overview">
+					<a href="#0">Project Deployment</a>
+					
+					<ul>
+						<li><a href="#0">Active Projects</a></li>
+						<li><a href="#0">Project Managers</a></li>
+						<li><a href="#0">Project Health</a></li>
+                        <li><a href="#0">Value</a></li>
+					</ul>
+				</li>
+
+			
+<!--
+			<ul>
+				<li class="cd-label">Action</li>
+				<li class="action-btn"><a href="#0">+ Button</a></li>
+			</ul>
+-->
+		</nav>
+
+		<div class="content-wrapper">
+<p style="margin-top: 2%">
+    <select id="type">
+      <option value="success">success</option>
+        <option value="info">info</option>
+        <option value="warning">warning</option>
+        <option value="error">error</option>
+    </select>
+    <label for="title">title:</label>
+    <input type="text" value="title" id="title">
+
+    <label for="content">content:</label>
+    <input type="text" id="content" value="content" style="width: 50%">
+
+    <button onclick="appendText()">Add Notification</button>
+    <section id="mainsection">
+    <div class="messages"></div>     
+    </section>
+
+
+  </p>        
+            </br>            
+<div class="alert success">
+  <span class="closebtn">&times;</span>  
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>
+
+<div class="alert info">
+  <span class="closebtn">&times;</span>  
+  <strong>Info!</strong> Indicates a neutral informative change or action.
+</div>
+ 
+ <div class="alert">
+  <span class="closebtn">&times;</span>  
+  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+</div>
+<div class="alert warning">
+  <span class="closebtn">&times;</span>  
+  <strong>Warning!</strong> Indicates a warning that might need attention.
+</div>
+<div class="alert success">
+  <span class="closebtn">&times;</span>  
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>
+
+<div class="alert info">
+  <span class="closebtn">&times;</span>  
+  <strong>Info!</strong> Indicates a neutral informative change or action.
+</div>
+ 
+<div class="alert warning">
+  <span class="closebtn">&times;</span>  
+  <strong>Warning!</strong> Indicates a warning that might need attention.
+</div>
+<div class="alert success">
+  <span class="closebtn">&times;</span>  
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>
+
+<div class="alert info">
+  <span class="closebtn">&times;</span>  
+  <strong>Info!</strong> Indicates a neutral informative change or action.
+</div>
+ 
+
+<div class="alert warning">
+  <span class="closebtn">&times;</span>  
+  <strong>Warning!</strong> Indicates a warning that might need attention.
+</div>            
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
+
+     
+		</div> <!-- .content-wrapper -->
+	
+        
+<footer class="page-footer" >
+ 
+      <div class="row">
+        <div class="col l6 ">
+          <h5 class="white-text">Project IIM</h5>
+          <p class="grey-text text-lighten-4">This project is being developed for codegiest hackathon. All tasks, progress and features are aligned to fit within this deadline.</p>
+
+
+        </div>
+        <div class="col l3 ">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!" style="color: black">Home Page</a></li>
+            <li><p style="color:white"> IIM Team</p></li>
+            
+          </ul>
+        </div>
+       
+      </div>
+</footer>   
+</main> <!-- .cd-main-content -->
+</div>
+    
+
+ 
+      
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/jquery.menu-aim.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>
