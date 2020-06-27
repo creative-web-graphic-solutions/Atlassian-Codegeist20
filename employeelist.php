@@ -400,7 +400,7 @@ $(document).ready(function(){
 		</nav>
 
 		<div class="content-wrapper">
-    
+      
         <div class="table-responsive">
 			<div class="table-wrapper" >
 				<div class="table-title">
