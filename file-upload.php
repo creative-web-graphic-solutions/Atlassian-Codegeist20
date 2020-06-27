@@ -1,5 +1,7 @@
 <?php
+
 $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist') or die($mysqli->connect_error);
+$date = $_POST['dateofjoin'];
    
 $phpFileUploadErrors = array(
     0 => 'The file successfully Uploaded to the database',
@@ -50,7 +52,7 @@ if(isset($_FILES['userfile'])){
                 move_uploaded_file($file_array[$i]['tmp_name'], $img_dir);
                 
 //                $sql = "INSERT IGNORE INTO $table (name,myphoto) VALUES('$name','$img_dir')";
-               $sql = "INSERT INTO codegeistregister (FirstName, LastName, Email, Password, ContactNo, MyPhoto) VALUES ('$_POST[firstname]', '$_POST[lastname]', '$_POST[email]', '$_POST[password]', '$_POST[contactnum]', '$img_dir')";
+               $sql = "INSERT INTO employees (employeeno, employeename, joblocation, dateofjoin, contactnumber, designation, status, photo) VALUES ('$_POST[num]', '$_POST[emp_name]', '$_POST[joblocation]', STR_TO_DATE('$date', '%m/%d/%Y'), '$_POST[contactno]', '$_POST[designation]', '$_POST[status]', '$img_dir')";
                 $mysqli->query($sql) or die($mysqli->error);
                 
                 ?> <div class="alert alert-success"> 

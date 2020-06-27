@@ -10,6 +10,9 @@
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/dashboardstyle.css"> <!-- Resource style -->
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
      *{margin: 0px; padding: 0px; font-size: 15px; list-style: none}
         html, body{ background-color: #16F5E8; width: 100%; height:100%; position: relative;}
@@ -67,7 +70,7 @@
 		</nav>
 	</header> <!-- .cd-main-header -->
 
-<div class="container">    
+<div class="dashboard-container">    
 	<main class="cd-main-content">
 		<nav class="cd-side-nav">
 			<ul>
@@ -153,23 +156,23 @@
 
 		<div class="content-wrapper">
 			<!-- Start code for the form-->
-            <h2 style="text-align: center;font-size: 20px; color: brown;margin-top: 3%"> Send Email from the Home Page</h2> </br> </br>
+            <h2 style="text-align: center;font-size: 20px; color: brown;margin-top: 3%"> Send Email from the Home Page</h2> </br> 
 <form method="post" name="myemailform" action="form-to-email.php">
 	<p>
         <label for='name' style="margin-left: 30%">Enter Name: </label></br>
 		<input type="text" name="name" style="margin-left: 30%" >
 	</p>
-    </br> 
+     
 	<p>
 		<label for='email' style="margin-left: 30%">Enter Email Address:</label></br>
 		<input type="text" name="email" style="margin-left: 30%" >
 	</p>
-    </br> 
+     
 	<p>
 		<label for='message' style="margin-left: 30%;">Enter Message:</label> 
 		<textarea name="message" style="width: 40%; height: 150px;margin-left: 30%"></textarea>
 	</p>
-    </br>
+    
 	<input type="submit" name='submit' value="submit" style="margin-left: 40%">
     </br> 
 </form>
@@ -192,14 +195,14 @@ frmvalidator.addValidation("email","email","Please enter a valid email address")
         <div class="col-sm-6 ">
           <h5 class="white-text">Project IIM</h5>
           <p class="grey-text text-lighten-4">This project is being developed for codegiest hackathon. All tasks, progress and features are aligned to fit within this deadline.</p>
-
+            <p style="color:white"> IIM Team</p>
 
         </div>
         <div class="col-sm-3 ">
           <h5 class="white-text">Settings</h5>
           <ul>
             <li><a class="white-text" href="#!" style="color: black">Home Page</a></li>
-            <li><p style="color:white"> IIM Team</p></li>
+            
             
           </ul>
         </div>

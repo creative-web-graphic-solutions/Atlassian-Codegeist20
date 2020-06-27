@@ -1,3 +1,3 @@
-IT Infrastructure Management - CIO's Desk
+IT INFRASTRUCTURE MANAGEMENT - CIO'S DESK
 =========
 

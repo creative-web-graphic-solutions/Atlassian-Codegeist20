@@ -46,7 +46,7 @@ Main Page Content
 
 -------------------------------- */
 .cd-main-content .content-wrapper {
-  padding: 45px 5% 3em;
+/*  padding: 5px 5% 3em;*/
 }
 .cd-main-content .content-wrapper h1 {
   text-align: center;
@@ -60,6 +60,7 @@ Main Page Content
 }
 @media only screen and (min-width: 768px) {
   .cd-main-content .content-wrapper {
+    
     margin-left: 110px;
     padding-top: 55px;
   }
@@ -83,6 +84,7 @@ Main Page Content
 }
 @media only screen and (min-width: 1170px) {
   .cd-main-content .content-wrapper {
+      
     margin-left: 200px;
   }
   .cd-main-content::before {

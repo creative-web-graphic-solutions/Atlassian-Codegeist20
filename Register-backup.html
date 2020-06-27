@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -6,11 +7,10 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 <title>IT Infrastructure Registration</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>    
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">    -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>     
-    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 <style type="text/css">
       *{margin: 0px; padding: 0px; font-size: 15px; list-style: none}
         .header{ height:20%; background:blue; }
@@ -130,22 +130,20 @@
     
     </script>
     
-        
 </head>
 <body>
-
     
 <nav class="dark-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">IIM Logo</a>
       <ul class="right hide-on-med-and-down">
-        <li style="padding-right: 10px"><button type="button" class="btn btn-info" > <a href="Register.html" style="padding: 2%">Register</a></button></li> 
-          <li><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Login</button></li>
+        <li style="padding-right: 10px"><button type="button" class="btn btn-info btn-lg" > <a href="Register.html" style="padding: 2%">Register</a></button></li> 
+          <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"> Login</button></li>
         
       </ul>
 
       <ul id="nav-mobile" class="sidenav" >
-        <li><button type="button" class="btn btn-info " > <a href="Register.html">Register</a></button></li> 
-          <li><button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Login</button></li>
+        <li><button type="button" class="btn btn-info btn-lg" > <a href="Register.html">Register</a></button></li> 
+          <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login</button></li>
        
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -236,7 +234,7 @@
     </div>
     
     <div class="col l6">
-    <form action="Register.php" method="POST" enctype="multipart/form-data" >
+    <form action="register.php" method="POST" enctype="multipart/form-data" >
 		<h2 style="text-align: center">Register</h2>
         <p class="hint-text" style="text-align: center">Create your account. It's only takes a minute.</p> </br>
         <div class="form-group" >
@@ -258,29 +256,25 @@
             <Label for="Contact Number" style="color: brown; font-size: 15px;margin-left: 10px;">Contact Number</Label><input type="text"  style="color: black;margin-left: 10px" class="form-control" id="contactnum" name="contactnum" required="required">
         </div>        
         <div class="form-group">
-           
             <label for="My photo" style="color: brown; font-size: 15px; margin-left: 10px"> My Avatar</label>    
             <div class="row">
             
             <div class="col l10">    
-             <input type="file" name="userfile[]" value="" multiple="" style="margin-left: 10px; " placeholder="My Photo">    
-            
+            <input type="file" class="form-control"  name="myfile" id="myfile" style="margin-left: 10px; " placeholder="My Photo">
             </div>    
-<!--
             <div class="col l2">
-            <button type="submit" id="insert" name="insert" style="float:right; height: 40px; color: brown">Insert Image</button>
+<!--            <button type="submit" id="insert" style="float:right; height: 40px; color: brown">Insert Image</button>-->
             </div>
--->
             
             </div>        
-                             
+            
+                 
         </div>        
         <div class="form-group" >
 <!--			<label class="checkbox-inline" ><input type="checkbox" required="required" s> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>-->
 		</div>
 		<div class="form-group">
-            <input type="submit" name="submit" value="Submit" class="btn  btn-lg btn-block" style="background-color: green;margin-left:10px">
-            
+            <button type="submit" class="btn  btn-lg btn-block" id="insert" style="background-color: green;margin-left:10px">Register Now</button>
         </div>
     </form>
 	
@@ -289,7 +283,7 @@
     <img src="img/itsidebar.jpg" style="float: right"  >    
     </div>
 </div>
-
+</br>
 <div class="row">
 <footer class="page-footer " style="background-color: #0904FF">
     <div class="container">
