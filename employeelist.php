@@ -87,15 +87,17 @@
 	}
     table.table tr th, table.table tr td {
         border-color: #e9e9e9;
-		padding: 12px 15px;
+		padding: 6px 8px;
 		vertical-align: middle;
     }
+/*
 	table.table tr th:first-child {
 		width: 60px;
 	}
 	table.table tr th:last-child {
 		width: 100px;
 	}
+*/
     table.table-striped tbody tr:nth-of-type(odd) {
     	background-color: #fcfcfc;
 	}
@@ -281,6 +283,12 @@ $(document).ready(function(){
 		}
 	});
 });
+    </script>    
+<script>
+    function updateId(){
+    let id = this.getAttribute('data-rowid');
+    document.getElementsByName("id")[0].value = id;
+}
 </script>
 </head>
 <body>
@@ -297,7 +305,7 @@ $(document).ready(function(){
 
 		<nav class="cd-nav">
 			<ul class="cd-top-nav">
-				<li><a href="#0">Mail</a></li>
+				<li><a href="email.html">Mail</a></li>
 				<li><a href="Notification.html">Notification</a></li>
 				<li class="has-children account">
 					<a href="#0">
@@ -319,23 +327,22 @@ $(document).ready(function(){
     <main class="cd-main-content"  >
 		<nav class="cd-side-nav">
 			<ul>
-				<li class="cd-label">Main</li>
+						<li class="cd-label">Main</li>
                 	<li class="has-children overview">
-					<a href="#0">Employee</a>
+					<a href="employeelist.php">Employee</a>
 					
 					<ul>
-						<li><a href="#0">Add</a></li>
+						<li><a href="employeeadd.html">Add Employee</a></li>
 						
 					</ul>
 				</li>
 				<li class="has-children overview">
-					<a href="#0">Resources</a>
+					<a href="resources.php">Resources</a>
 					
 					<ul>
-						<li><a href="#0">Projects</a></li>
-						<li><a href="#0">Peoples</a></li>
-						<li><a href="#0">Equipments</a></li>
-                        <li><a href="#0">Schdules</a></li>
+						<li><a href="Projects.html">Add Project</a></li>
+						<li><a href="equipments.html">Add Equipment</a></li>
+                        
 					</ul>
 				</li>
 			    <li class="has-children overview">
@@ -400,7 +407,17 @@ $(document).ready(function(){
 		</nav>
 
 		<div class="content-wrapper">
-      
+       
+        <?php require_once 'employeeprocess.php'; ?>
+        
+        <?php if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-<?=$_SESSION['msg_type']?>">
+                <?php 
+                    echo $_SESSION['message']; 
+                    unset($_SESSION['message']);
+                ?>
+            </div>
+        <?php endif ?>    
         <div class="table-responsive">
 			<div class="table-wrapper" >
 				<div class="table-title">
@@ -408,23 +425,22 @@ $(document).ready(function(){
 					<div class="row">
 						<div class="col-xs-6">
 							<h2>Manage <b>Employees</b></h2>
-                            <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+<!--                            <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>-->
 						</div>
 						<div class="col-xs-6">
-							<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+							<a href="employeeadd.html" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+<!--							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						-->
 						</div>
 					</div>
 				</div>
-				<table class="table table-striped table-hover">
-					<thead>
+                 <?php
+                        $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
+                        $result = $mysqli->query("SELECT * FROM employees") or die($mysqli->error);
+                ?>
+				<table class="table justify-content-center" style="background-color:white">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+					<thead style="background-color:green;color:white;font-weight:bold">
 						<tr>
-							<th>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="selectAll">
-									<label for="selectAll"></label>
-								</span>
-							</th>
 							<th>Employee Name</th>
 							<th>Employee ID</th>
 							<th>Designation</th>
@@ -432,135 +448,83 @@ $(document).ready(function(){
 							<th>Actions</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox1" name="options[]" value="1">
-									<label for="checkbox1"></label>
-								</span>
-							</td>
-							<td>Thomas Hardy</td>
-							<td>thomashardy@mail.com</td>
-							<td>89 Chiaroscuro Rd, Portland, USA</td>
-							<td>(171) 555-2222</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox2" name="options[]" value="1">
-									<label for="checkbox2"></label>
-								</span>
-							</td>
-							<td>Dominique Perrier</td>
-							<td>dominiqueperrier@mail.com</td>
-							<td>Obere Str. 57, Berlin, Germany</td>
-							<td>(313) 555-5735</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox3" name="options[]" value="1">
-									<label for="checkbox3"></label>
-								</span>
-							</td>
-							<td>Maria Anders</td>
-							<td>mariaanders@mail.com</td>
-							<td>25, rue Lauriston, Paris, France</td>
-							<td>(503) 555-9931</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox4" name="options[]" value="1">
-									<label for="checkbox4"></label>
-								</span>
-							</td>
-							<td>Fran Wilson</td>
-							<td>franwilson@mail.com</td>
-							<td>C/ Araquil, 67, Madrid, Spain</td>
-							<td>(204) 619-5731</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-							</td>
-						</tr>					
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox5" name="options[]" value="1">
-									<label for="checkbox5"></label>
-								</span>
-							</td>
-							<td>Martin Blank</td>
-							<td>martinblank@mail.com</td>
-							<td>Via Monte Bianco 34, Turin, Italy</td>
-							<td>(480) 631-2097</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-							</td>
-						</tr> 
-					</tbody>
-				</table>
-				
-			
+            <?php
+                while ($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo $row['employeename']; ?></td>
+                        <td><?php echo $row['employeeno']; ?></td>
+                        <td><?php echo $row['designation']; ?></td>
+                        <td><?php echo $row['contactnumber']; ?></td>
+                        <td>
+                            
+                           <button name="edit" class="btn btn-info"> <a href="#editEmployeeModal"  data-toggle="modal" data-dismiss="modal" style="color: brown" data-rowid="<?=$row['id']; ?>" onClick="updateId()" >Edit</a> </button>
+                        
+                        <button name="delete" class="btn btn-info " ><a href="employeelist.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
+                        </td>
+                    </tr>
+                <?php endwhile; ?>    
+                </table>
 		      
     
 	<!-- Edit Modal HTML -->
+	<div id="editEmployeeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="employeeprocess.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+					<div class="modal-header">						
+						<h4 class="modal-title">Edit Employee</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">					
+						<div class="form-group">
+							<label>Employee Number</label>
+							<input type="text" class="form-control" value="<?php $employeenum ?>" name="employeenum" required>
+						</div>
+                        <div class="form-group">
+							<label>Employee Name</label>
+							<input type="text" class="form-control" name="employeename" value="<?php $employeename ?>" required>
+						</div>
+                        <div class="form-group">
+							<label>Job Location</label>
+							<input type="text" class="form-control" name="joblocation" value="<?php $joblocation ?>" required>
+						</div>
+                        <div class="form-group">
+							<label>DateofJoin</label>
+							<input type="date" class="form-control" name="dateofjoin" value="<?php $dateofjoin ?>" required>
+						</div>
+						<div class="form-group">
+							<label>Contact Number</label>
+							<input type="text" class="form-control" name="contactnumber" value="<?php $contactnumber ?>" required>
+						</div>
+						<div class="form-group">
+							<label>Designation</label>
+							<input type="text" class="form-control" name="designation" value="<?php $designation ?>" required>
+						</div>
+                        <div class="form-group">
+							<label>Status</label>
+							<input type="text" class="form-control" name="status" value="<?php $status ?>" required>
+						</div>
+						<div class="form-group">
+							<label>Photo</label>
+							<input type="file" class="form-control" name="myfile" required>
+						</div>					
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-success" name="edit" value="Update">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- add Modal HTML -->
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">						
 						<h4 class="modal-title">Add Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Phone</label>
-							<input type="text" class="form-control" required>
-						</div>					
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-success" value="Add">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Edit Employee</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
@@ -592,6 +556,7 @@ $(document).ready(function(){
 	<!-- Delete Modal HTML -->
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">						

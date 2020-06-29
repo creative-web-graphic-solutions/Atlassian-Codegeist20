@@ -71,7 +71,13 @@ function appendText() {
   var type = $("#type").val();
   var container = document.getElementsByClassName("content-wrapper");    
   var section =document.getElementsByClassName("results");    
-  var markup = "<div class='results'><button class='closebtn' onclick='closeAlert(this)'>X</button>&nbsp;&nbsp;" + type + ' ' + title + ' ' + content + "</div>";
+//  var markup = "<div class='results'><button class='closebtn' onclick='closeAlert(this)'>X</button>&nbsp;&nbsp;" + type + ' ' + title + ' ' + content + "</div>";
+  var markup = "<div class='results'><span class='closebtn' onclick='closeAlert(this)' >&times;</span>&nbsp;&nbsp;" + type +' ' + title + ' ' + content + "</div>"
+    
+//<div class="alert success">
+//  <span class="closebtn">&times;</span>  
+//  <strong>Success!</strong> Indicates a successful or positive action.
+//</div>    
 
   if (type === 'success') {
     $('.messages').css({
@@ -96,7 +102,8 @@ function appendText() {
 }
 
 function closeAlert(_this) {
-  $(_this).parent().remove()
+  $(_this).parent(alert).remove();
+//    $(.results).remove();
 }
 </script>         	
 	
@@ -143,23 +150,22 @@ function closeAlert(_this) {
 	<main class="cd-main-content">
 		<nav class="cd-side-nav">
 			<ul>
-				<li class="cd-label">Main</li>
+						<li class="cd-label">Main</li>
                 	<li class="has-children overview">
-					<a href="#0">Employee</a>
+					<a href="employeelist.php">Employee</a>
 					
 					<ul>
-						<li><a href="#0">Add</a></li>
+						<li><a href="employeeadd.html">Add Employee</a></li>
 						
 					</ul>
 				</li>
 				<li class="has-children overview">
-					<a href="#0">Resources</a>
+					<a href="resources.php">Resources</a>
 					
 					<ul>
-						<li><a href="#0">Projects</a></li>
-						<li><a href="#0">Peoples</a></li>
-						<li><a href="#0">Equipments</a></li>
-                        <li><a href="#0">Schdules</a></li>
+						<li><a href="Projects.html">Add Project</a></li>
+						<li><a href="equipments.html">Add Equipment</a></li>
+                        
 					</ul>
 				</li>
 			    <li class="has-children overview">

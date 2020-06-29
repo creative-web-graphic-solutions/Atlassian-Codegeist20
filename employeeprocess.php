@@ -2,7 +2,7 @@
 
 session_start();
 
-$mysqli = new mysqli('localhost', 'root', 'mypass123', 'crud') or die(mysqli_error($mysqli));
+$mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist') or die($mysqli->error);
 
 $id = 0;
 $update = false;
@@ -25,35 +25,48 @@ if (isset($_POST['save'])){
 
 if (isset($_GET['delete'])){
     $id = $_GET['delete'];
-    $mysqli->query("DELETE FROM data WHERE id=$id") or die($mysqli->error());
+    $mysqli->query("DELETE FROM employees WHERE id=$id") or die($mysqli->error());
     
     $_SESSION['message'] = "Record has been deleted!";
     $_SESSION['msg_type'] = "danger";
     
-    header("location: index.php");
+    header("location: employeelist.php");
 }
 
 if (isset($_GET['edit'])){
     $id = $_GET['edit'];
     $update = true;
-    $result = $mysqli->query("SELECT * FROM data WHERE id=$id") or die($mysqli->error());
+    $result = $mysqli->query("SELECT * FROM employees WHERE id=$id") or die($mysqli->error());
     if (count($result)==1){
         $row = $result->fetch_array();
-        $name = $row['name'];
-        $location = $row['location'];
+        
+        $employeenum = $row['employeenum'];
+        $employeename = $row['employeename'];
+        $joblocation = $row['joblocation'];
+        $dateofjoin = $row['dateofjoin'];
+        $contactnumber = $row['contactnumber'];
+        $designation = $row['designation'];
+        $status = $row['status'];
     }
 }
 
 if (isset($_POST['update'])){
     $id = $_POST['id'];
-    $name = $_POST['name'];
-    $location = $_POST['location'];
-    
-    $mysqli->query("UPDATE data SET name='$name', location='$location' WHERE id=$id") or
+    $employeeno = $_POST['employeenum'];
+    $employeename = $_POST['employeename'];
+    $joblocation = $_POST['joblocation'];
+    $dateofjoin = $_POST['dateofjoin'];
+    $contactnumber = $_POST['contactnumber'];
+    $designation = $_POST['designation'];
+    $status = $_POST['status'];
+    $mysqli->query("UPDATE employees SET employeeno='$employeenum' , employeename='$employeename', joblocation='$joblocation', dateofjoin='$dateofjoin', contactnumber='$contactnumber', designation='$designation', status='$status' WHERE id=$id") or
             die($mysqli->error);
     
     $_SESSION['message'] = "Record has been updated!";
     $_SESSION['msg_type'] = "warning";
     
-    header('location: index.php');
+    header('location: employeelist.php');
 }
+
+            
+?>

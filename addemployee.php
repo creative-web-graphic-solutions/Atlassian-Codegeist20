@@ -52,7 +52,7 @@ if(isset($_FILES['userfile'])){
                 move_uploaded_file($file_array[$i]['tmp_name'], $img_dir);
                 
 //                $sql = "INSERT IGNORE INTO $table (name,myphoto) VALUES('$name','$img_dir')";
-               $sql = "INSERT INTO employees (employeeno, employeename, joblocation, dateofjoin, contactnumber, designation, status, photo) VALUES ('$_POST[num]', '$_POST[emp_name]', '$_POST[joblocation]', STR_TO_DATE('$date', '%m/%d/%Y'), '$_POST[contactno]', '$_POST[designation]', '$_POST[status]', '$img_dir')";
+               $sql = "INSERT INTO employees (employeeno, employeename, joblocation, dateofjoin, contactnumber, designation, status, photo) VALUES ('$_POST[num]', '$_POST[emp_name]', '$_POST[joblocation]', '$_POST[dateofjoin]', '$_POST[contactno]', '$_POST[designation]', '$_POST[status]', '$img_dir')";
                 $mysqli->query($sql) or die($mysqli->error);
                 
                 ?> <div class="alert alert-success"> 
