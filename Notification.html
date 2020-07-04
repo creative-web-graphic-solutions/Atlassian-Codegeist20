@@ -64,21 +64,18 @@
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-function appendText() {
-    
+
+       function appendText() {
+//  var x = document.getElementById("myBR");
+//  x.style.display = "none";           
   var title = $("#title").val();
   var content = $("#content").val();
   var type = $("#type").val();
   var container = document.getElementsByClassName("content-wrapper");    
   var section =document.getElementsByClassName("results");    
 //  var markup = "<div class='results'><button class='closebtn' onclick='closeAlert(this)'>X</button>&nbsp;&nbsp;" + type + ' ' + title + ' ' + content + "</div>";
-  var markup = "<div class='results'><span class='closebtn' onclick='closeAlert(this)' >&times;</span>&nbsp;&nbsp;" + type +' ' + title + ' ' + content + "</div>"
-    
-//<div class="alert success">
-//  <span class="closebtn">&times;</span>  
-//  <strong>Success!</strong> Indicates a successful or positive action.
-//</div>    
-
+    var markup = "<div class='results alert success'><span class='closebtn'>&times;</span> <strong>Success!</strong>" + type + ' ' +title + ' ' +content + "</div>" ;       
+  
   if (type === 'success') {
     $('.messages').css({
       "background-color": "green"
@@ -101,10 +98,26 @@ function appendText() {
   container.appendChild(section.cloneNode(true));
 }
 
-function closeAlert(_this) {
+  function closeAlert(_this) {
   $(_this).parent(alert).remove();
-//    $(.results).remove();
-}
+    $(_this).remove();
+}       
+    
+// Get the div element with id="notify-wrap"
+  var div = document.getElementById("notify-wrap"); 
+
+    
+// Get all results elements inside of notify-wrap div
+  var divs = div.getElementsByClassNameName("results");  
+    
+    
+ // Create a loop which will insert a new div element before each element in div, starting from the second span element
+  var i;
+  for (i = 1; i < divs.length; i++) {
+    var newElem = document.createElement("div");
+    div.insertBefore(newElem, divs[i]);
+  }
+   
 </script>         	
 	
 </head>
@@ -244,60 +257,61 @@ function closeAlert(_this) {
     <input type="text" id="content" value="content" style="width: 50%">
 
     <button onclick="appendText()">Add Notification</button>
-    <section id="mainsection">
-    <div class="messages"></div>     
-    </section>
+    
 
+                
+  <div class="messages"> </div>     
+<div> <br id="myBR"> </div>                
+                
 
-  </p>        
-            </br>            
-<div class="alert success">
+<div class=" results alert info">
   <span class="closebtn">&times;</span>  
   <strong>Success!</strong> Indicates a successful or positive action.
 </div>
 
-<div class="alert info">
+<div class=" results alert info">
   <span class="closebtn">&times;</span>  
   <strong>Info!</strong> Indicates a neutral informative change or action.
 </div>
  
- <div class="alert">
+ <div class=" results alert">
   <span class="closebtn">&times;</span>  
   <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
 </div>
-<div class="alert warning">
+<div class="results alert warning">
   <span class="closebtn">&times;</span>  
   <strong>Warning!</strong> Indicates a warning that might need attention.
 </div>
-<div class="alert success">
+<div class="results alert success">
   <span class="closebtn">&times;</span>  
   <strong>Success!</strong> Indicates a successful or positive action.
 </div>
 
-<div class="alert info">
+<div class="results alert info">
   <span class="closebtn">&times;</span>  
   <strong>Info!</strong> Indicates a neutral informative change or action.
 </div>
  
-<div class="alert warning">
+<div class="results alert warning">
   <span class="closebtn">&times;</span>  
   <strong>Warning!</strong> Indicates a warning that might need attention.
 </div>
-<div class="alert success">
+<div class="results alert success">
   <span class="closebtn">&times;</span>  
   <strong>Success!</strong> Indicates a successful or positive action.
 </div>
 
-<div class="alert info">
+<div class="results alert info">
   <span class="closebtn">&times;</span>  
   <strong>Info!</strong> Indicates a neutral informative change or action.
 </div>
  
 
-<div class="alert warning">
+<div class="results alert warning">
   <span class="closebtn">&times;</span>  
   <strong>Warning!</strong> Indicates a warning that might need attention.
-</div>            
+</div>  
+</div>                
 <script>
 var close = document.getElementsByClassName("closebtn");
 var i;

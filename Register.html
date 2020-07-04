@@ -176,10 +176,11 @@
           <h4 class="modal-title" style="text-align: center; font-style: bold; color: blue">Login </h4>
         </div>
         <div class="modal-body" >
-            <form accesskey="">
-           <input type="text" class="form-control" name="EmployeeId" placeholder="Email id or Phone number" required="required"> </br>
+            <form action="login.php" method="post">
+           <input type="text" class="form-control" name="email" placeholder="Email id or Phone number" required="required"> </br>
            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-            <span style="padding-left:30%"><button name="submit" class="btn btn-info btn-lg" ><a href="#modal-3" data-toggle="modal" data-dismiss="modal" style="color: white">Submit</a></button> &nbsp;&nbsp; &nbsp;&nbsp; <button name="Cancel" class="btn btn-info btn-lg">Cancel</button></span>
+<!--            <span style="padding-left:30%"><button name="submit" class="btn btn-info btn-lg" ><a href="#modal-3" data-toggle="modal" data-dismiss="modal" style="color: white">Submit</a></button> &nbsp;&nbsp; &nbsp;&nbsp; <button name="Cancel" class="btn btn-info btn-lg">Cancel</button></span>-->
+            <span style="padding-left:30%"><button type="submit" name="submit" style="height: color:brown"  class="btn btn-info">&nbsp;&nbsp; &nbsp;&nbsp;Submit </button> <button name="Cancel" class="btn btn-info btn-lg">Cancel</button></span>
             </form>
             
         </div>
@@ -236,26 +237,26 @@
     </div>
     
     <div class="col l6">
-    <form action="Register.php" method="POST" enctype="multipart/form-data" >
+    <form action="codegeistregister.php" method="POST" enctype="multipart/form-data" >
 		<h2 style="text-align: center">Register</h2>
         <p class="hint-text" style="text-align: center">Create your account. It's only takes a minute.</p> </br>
         <div class="form-group" >
 			<div class="row">
-				<div class="col-xs-6"><Label for="First Name" style="color: brown; font-size: 15px;margin-left:10px;">First Name <input type="text" class="form-control" style="color: black;margin-left: 10px" id="firstname"  name="firstname"  required="required"></div></Label>
-				<div class="col-xs-6"><Label for="Last Name" style="color: brown; font-size: 15px;margin-left:10px;">Last Name<input type="text" class="form-control" style="color: black;margin-left: 10px" id="lastname" name="lastname"  required="required"></div></Label>
+				<div class="col-xs-6"><Label for="First Name" style="color: brown; font-size: 15px;margin-left:10px;">First Name <input type="text" class="form-control" style="color: black;margin-left: 10px"  name="firstname"  required="required"></div></Label>
+				<div class="col-xs-6"><Label for="Last Name" style="color: brown; font-size: 15px;margin-left:10px;">Last Name<input type="text" class="form-control" style="color: black;margin-left: 10px" name="lastname"  required="required"></div></Label>
 			</div>        	
         </div>
         <div class="form-group" >
-        	<Label for="email" style="color: brown; font-size: 15px;margin-left:10px;"> Email</Label><input type="email" style="color: black;margin-left: 10px" class="form-control" id="email" name="email" required="required">
+        	<Label for="email" style="color: brown; font-size: 15px;margin-left:10px;"> Email</Label><input type="email" style="color: black;margin-left: 10px" class="form-control" name="email" required="required">
         </div>
 		<div class="form-group" >
-            <Label for="Passwod" style="color: brown; font-size: 15px;margin-left: 10px;">Password</Label><input type="password" style="color: black;margin-left: 10px" class="form-control" id="password" name="password"  required="required">
+            <Label for="Passwod" style="color: brown; font-size: 15px;margin-left: 10px;">Password</Label><input type="password" style="color: black;margin-left: 10px" class="form-control" name="password"  required="required">
         </div>
 		<div class="form-group" >
-            <Label for="Confirm Password" style="color: brown; font-size: 15px;margin-left: 10px;">Confirm Password</Label><input type="password" style="color: black;margin-left: 10px" class="form-control" id="confirmpassord" name="confirmpassword" required="required">
+            <Label for="Confirm Password" style="color: brown; font-size: 15px;margin-left: 10px;">Confirm Password</Label><input type="password" style="color: black;margin-left: 10px" class="form-control" name="confirmpassword" required="required">
         </div>        
         <div class="form-group">
-            <Label for="Contact Number" style="color: brown; font-size: 15px;margin-left: 10px;">Contact Number</Label><input type="text"  style="color: black;margin-left: 10px" class="form-control" id="contactnum" name="contactnum" required="required">
+            <Label for="Contact Number" style="color: brown; font-size: 15px;margin-left: 10px;">Contact Number</Label><input type="text"  style="color: black;margin-left: 10px" class="form-control" name="contactnum" required="required">
         </div>        
         <div class="form-group">
            

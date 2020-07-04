@@ -31,30 +31,19 @@
 /*        .footer{ height:35%; background:blue;bottom:0; position: absolute; width: 100%}*/
         
 */
-        
+
+table {
+  width: 100%;
+}
+table th {
+  background-color: #4CAF50;
+  color: white;
+/*  padding: 5px;*/
+  text-align: left;
+}  
    
     </style>    
-<style>
-     .weektable {
-      border-collapse: collapse;
-      border: 2px solid rgb(200,200,200);
-      letter-spacing: 1px;
-/*      font-size: 1.2rem;*/
-    }
-
-    .weektable td, th {
-      border: 1px solid rgb(190,190,190);
-      padding: 10px 20px;
-    }
-
-    .weektable td {
-      text-align: center;
-    }
-
-    .weektable caption {
-      padding: 10px;
-    }
-    </style>
+     	
 	
 </head>
 <body>
@@ -175,84 +164,99 @@
 
 		<div class="content-wrapper" >
 
-         <form action="addsystems.php" method="POST" enctype="multipart/form-data" style="margin-left: 20%; ">
-        <table align="center" width="90%"  border="5">
+         <form action="updateproject.php" method="POST" style="margin-left: 5%; margin-right: 10%;">
+         <table width="90%" border="5">
             <tr>
-                <td colspan="2" align="center"><h2 style="font-size:30px; color:brown; margin-top: 1%; font: bold">Allocate Systems and Projects</h2> </br> </td>
+                <td colspan="2" align="center"><h2 style="font-size:30px; color:brown; margin-top: 4%; font: bold">Update Active Project Information</h2> </br> </td>
  
             </tr>
+          <?php
+                        $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
+                        $result = $mysqli->query("SELECT * FROM Projects") or die($mysqli->error);
+                ?>
              <tr>
-                <td align="left" valign="top" width="41%" >Project Name <span style="color:red">*</span></td>
+                <td align="left" valign="top" style= "width:40%" style="margin-bottom: 2%" >Project name<span style="color:red">*</span></td>
                 <td width="57%">
-                    <input type="text" value="" name="projectname"  size="40"> </br> </br></td> 
-            </tr>
-            <tr>
-                <td align="left" valign="top" width="41%">Equipments Needed<span style="color:red">*</span></td>
- 
-                <td width="57%"><input type="text" value="" name="equipneed" size="24"></br> </br></td>
-            </tr>
-           <tr>
-                <td align="left" valign="top" width="41%">Job Location</td>
-                <td width="57%" ><select name="joblocation" style="width:65%" >
-                    <option value="Dev center">Dev center</option>
-                    <option value="Conference">Conference</option>
-                    <option value="Reception">Reception</option>
-                    <option value="Dev center2">Dev center2</option>
-                    <option value="Dev center3">Dev center3</option>
-                    <option value="Dev center4">Dev center4</option>
-                    <option value="Dev center5">Dev center5</option>    
-                    </select></br> </br></td>
-  
-            </tr>
-            <tr>
- 
-            <td align="left" valign="top" width="41%">Available Equipment</td>
-            <td width="57%">
-               
-                <input type="text" value="" name="availequip" size="24"></br> </br></td> </br>
-             
-            </tr>
-                <tr>
- 
-            <td align="left" valign="top" width="41%">Project Assigned To</td>
-            <td width="57%">
-                <input type="text" value="" name="projectassign" size="24"></td> 
-             <td align="left" valign="top" width="40%">Emp&nbsp;Id</td>
-            <td>        
-                <input type="text" value="" name="empid"  > </br> </br> </td> 
-            </tr> 
-           
-           
- <table class="weektable">
-      <tr>
-        <td>&nbsp;</td>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
-        <th>Sun</th>
-      </tr>
-      <tr>
-        <th>Schedules</th>
-        <td><input type="text" value="" name="sun" size="3"> </td>    </td>
-        <td><input type="text" value="" name="mon" size="3"></td>
-        <td><input type="text" value="" name="tue" size="3"></td>
-        <td><input type="text" value="" name="wed" size="3"></td>
-        <td><input type="text" value="" name="thu" size="3"> </td>
-        <td><input type="text" value="" name="fri" size="3"> </td>
-        <td><input type="text" value="" name="sat" size="3"></td>
-      </tr>
-</table>       
-</br>
+<!--                    <input type="text" value="" name="projectname" style="width: 80%" size="24"> </br> </br>  -->
+                    <select name="activeproject" style="width100%">
 
- 
+                        <?php while ($row = $result->fetch_assoc()): ?>
+                        <option value="<?php  echo $row['projectname'] ?>"><?php  echo $row['projectname'] ?></option>
+                        <?php endwhile ?>
+                        
+                    </select>
+             </br> </br> </td> 
+            </tr> 
+            <tr > 
+<!--                <td align="left" valign="top">Start Date<span style="color:red">*</span></td>-->
+<!--
+                <?php 
+                    $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
+                    $sql = "select * from Projects where projectname = '$_POST[activeproject]' ";
+                    $result = $mysqli->query($sql);            
+                    $row = $result->fetch_assoc();            
+                 ?>
+-->
+<!--                <td ><input type="date" value="<?php echo $row['startdate']; ?>" name="startdate">  </td>-->
+               
             
-                <td >
+            <td align="left" valign="top" style="width: 100%" >Test Date</td>
+                 <?php
+                $timezone = "Asia/Colombo";
+                date_default_timezone_set($timezone);
+                $today = date("Y-m-d");
+                ?>
+                <td><input type="date" name="testdate" value="<?php echo $today; ?>" name="currentdate" > </br> </br></td>
+            </tr>
+              
+             <tr>
+                  <td >Task&nbsp;or&nbsp;Milestones&nbsp;</td>
+            <td>
+                <input type="text" value="" name="task" size="20"> </br> </br></td>
+                
+                <td align="left" valign="top" width="41%">Cost&nbsp;of&nbsp;Project($)</td>
+                
+                <td><input type="text" name="costofproject" value="" multiple="" ></br> </td>
+            </tr>
+            <tr>
+ 
+            <td align="left" valign="top"  > Items Produced</td>
+            <td >
+                <input type="text" value="" name="itemproduce" size="24"></td>
+            <td align="left" valign="top" width="41%">Defects&nbsp;found</td>
+                
+                 <td><input type="text" name="defectsfound" value="" multiple="" ></br> </br> </td>
+
+               
+            </tr>
+            <tr>
+                <td align="left" valign="top" width="41%">Sample Tested<span style="color:red">*</span></td>
+                <td width="57%">
+                    <input type="number" value="" name="sampletest" size="24">
+                    
+</br> </br> </td>
+            <td align="left" valign="top" width="41%">Status</td>
+                
+                <td> <select name="status">
+                        <option value="Active">Active</option>
+                        <option value="In-Active">Not Active</option>
+                    </select>
+                    </br> </br> </td>
+            </tr>
+            
+            
+             <tr>
+                <td align="left" valign="top" width="41%" style="text-align: left">Project Overview &nbsp; </td>
+                
+                <td ><textarea id="overview" name="overview" rows="4" cols="50"  style="text-align: left">
+                    </textarea></br> </br> </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
                     <p align="center">
                        <input type="submit" name="submit" style="height: color:brown"  class="btn btn-info "value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="reset" value="Reset All" class="btn btn-info " name="reset"></td>
+                        <input type="reset" value="Reset All" class="btn btn-info " name="B5"></td>
             </tr>
  
         </table>

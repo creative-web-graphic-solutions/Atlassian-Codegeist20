@@ -1,5 +1,7 @@
 <?php
 $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist') or die($mysqli->connect_error);
+require 'db.php';
+session_start();
    
 $phpFileUploadErrors = array(
     0 => 'The file successfully Uploaded to the Database',
@@ -11,6 +13,9 @@ $phpFileUploadErrors = array(
     7 => 'Failed to write file to disk.',
     8 => 'A PHP extension stopped the file upload.',
 );
+
+
+
 
 //$_$FILES global variable
 if(isset($_FILES['userfile'])){

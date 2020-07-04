@@ -346,17 +346,17 @@ $(document).ready(function(){
 					</ul>
 				</li>
 			    <li class="has-children overview">
-					<a href="usermanagement.php">User Management</a>
+					<a href="#0">User Management</a>
 					
 					<ul>
-						<li><a href="">Add New User</a></li>
+						<li><a href="#0">Add New User</a></li>
 				   </ul>
 				</li>
                 <li class="has-children overview">
-					<a href="groupmanagement.php">Groups Management</a>
+					<a href="#0">Groups Management</a>
 					
 					<ul>
-						<li><a href="addgroup.html">Create New Group</a></li>
+						<li><a href="#0">Create New Group</a></li>
 						
 					</ul>
 				</li>
@@ -370,11 +370,13 @@ $(document).ready(function(){
 				</li>
 
 				<li class="has-children overview">
-					<a href="mycontacts.php">My Contacts</a>
+					<a href="#0">My Contacts</a>
 					
 					<ul>
-						<li><a href="addcontacts.html">Add Contacts</a></li>
-						                   
+						<li><a href="#0">Supplier</a></li>
+						<li><a href="#0">Vendor</a></li>
+						<li><a href="#0">Partnership</a></li>
+                        <li><a href="#0">B2B</a></li>                        
 					</ul>
 				</li>
 			
@@ -385,11 +387,13 @@ $(document).ready(function(){
 					
 				</li>
             <li class="has-children overview">
-					<a href="projectdeployment.php">Project Deployment</a>
+					<a href="#0">Project Deployment</a>
 					
 					<ul>
-						<li><a href="activeproject.php">Add Active Project</a></li>
-						
+						<li><a href="#0">Active Projects</a></li>
+						<li><a href="#0">Project Managers</a></li>
+						<li><a href="#0">Project Health</a></li>
+                        <li><a href="#0">Value</a></li>
 					</ul>
 				</li>
 
@@ -404,7 +408,7 @@ $(document).ready(function(){
 
 		<div class="content-wrapper">
        
-        <?php require_once 'employeeprocess.php'; ?>
+
         
         <?php if (isset($_SESSION['message'])): ?>
             <div class="alert alert-<?=$_SESSION['msg_type']?>">
@@ -420,163 +424,49 @@ $(document).ready(function(){
                         
 					<div class="row">
 						<div class="col-xs-6">
-							<h2>Manage <b>Employees</b></h2>
+							<h2>Manage <b>Groups</b></h2>
 <!--                            <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>-->
 						</div>
 						<div class="col-xs-6">
-							<a href="employeeadd.html" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+							<a href="addgroup.html" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Create New Group</span></a>
 <!--							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						-->
 						</div>
 					</div>
 				</div>
                  <?php
                         $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
-                        $result = $mysqli->query("SELECT * FROM employees") or die($mysqli->error);
+                        $result = $mysqli->query("SELECT * FROM groupmgt") or die($mysqli->error);
                 ?>
 				<table class="table justify-content-center" style="background-color:white">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
 					<thead style="background-color:green;color:white;font-weight:bold">
 						<tr>
-							<th>Employee Name</th>
-							<th>Employee ID</th>
-							<th>Designation</th>
-							<th>Phone</th>
+                            <th>Group Name</th>
+							<th># of Users</th>
+							<th>Created At</th>
+                            <th>Job Location</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
             <?php
                 while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row['employeename']; ?></td>
-                        <td><?php echo $row['employeeno']; ?></td>
-                        <td><?php echo $row['designation']; ?></td>
-                        <td><?php echo $row['contactnumber']; ?></td>
+                        <td><?php echo $row['groupname']; ?></td>
+                        <td><?php echo $row['noofusers']; ?></td>
+                        <td><?php echo $row['creationdate']; ?></td>
+                        <td><?php echo $row['joblocation']; ?></td>
                         <td>
                             
                            <button name="edit" class="btn btn-info"> <a href="#editEmployeeModal"  data-toggle="modal" data-dismiss="modal" style="color: brown" data-rowid="<?=$row['id']; ?>" onClick="updateId()" >Edit</a> </button>
                         
-                        <button name="delete" class="btn btn-info " ><a href="employeelist.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
+                        <button name="delete" class="btn btn-info " ><a href="usergroupprocess.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
                         </td>
                     </tr>
                 <?php endwhile; ?>    
                 </table>
 		      
     
-	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-                  <?php
-                        $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
-                        $result = $mysqli->query("SELECT * FROM employees") or die($mysqli->error);
-                ?>
-				<form action="employeeprocess.php" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="<?php echo $id; ?>">
-					<div class="modal-header">						
-						<h4 class="modal-title">Edit Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<div class="form-group">
-							<label>Employee Number</label>
-							<input type="text" class="form-control" value="<?php $employeenum ?>" name="employeenum" required>
-						</div>
-                        <div class="form-group">
-							<label>Employee Name</label>
-							<input type="text" class="form-control" name="employeename" value="<?php $employeename ?>" required>
-						</div>
-                        <div class="form-group">
-							<label>Job Location</label>
-							<input type="text" class="form-control" name="joblocation" value="<?php $joblocation ?>" required>
-						</div>
-                        <div class="form-group">
-							<label>DateofJoin</label>
-							<input type="date" class="form-control" name="dateofjoin" value="<?php $dateofjoin ?>" required>
-						</div>
-						<div class="form-group">
-							<label>Contact Number</label>
-							<input type="text" class="form-control" name="contactnumber" value="<?php $contactnumber ?>" required>
-						</div>
-						<div class="form-group">
-							<label>Designation</label>
-							<input type="text" class="form-control" name="designation" value="<?php $designation ?>" required>
-						</div>
-                        <div class="form-group">
-							<label>Status</label>
-							<input type="text" class="form-control" name="status" value="<?php $status ?>" required>
-						</div>
-						<div class="form-group">
-							<label>Photo</label>
-							<input type="file" class="form-control" name="myfile" required>
-						</div>					
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-success" name="edit" value="Update">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- add Modal HTML -->
-	<div id="addEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Add Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Phone</label>
-							<input type="text" class="form-control" required>
-						</div>					
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-info" value="Save">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Delete Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<p>Are you sure you want to delete these Records?</p>
-						<p class="text-warning"><small>This action cannot be undone.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" value="Delete">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-            
-            
+    
 		</div> <!-- .content-wrapper -->
 	
         

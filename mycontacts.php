@@ -11,6 +11,9 @@
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/dashboardstyle.css"> <!-- Resource style -->
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -122,10 +125,8 @@
 					<a href="#0">My Contacts</a>
 					
 					<ul>
-						<li><a href="#0">Supplier</a></li>
-						<li><a href="#0">Vendor</a></li>
-						<li><a href="#0">Partnership</a></li>
-                        <li><a href="#0">B2B</a></li>                        
+						<li><a href="addcontacts.html">Add Contacts</a></li>
+						                     
 					</ul>
 				</li>
 			
@@ -156,50 +157,109 @@
 		</nav>
 
 		<div class="content-wrapper">
-            
-            <?php require_once 'resourceprocess.php'; ?>
-            <?php if (isset($_SESSION['message'])): ?>
-            <div class="alert alert-<?=$_SESSION['msg_type']?>">
-                <?php 
-                    echo $_SESSION['message']; 
-                    unset($_SESSION['message']);
-                ?>
-            </div>
-        <?php endif ?>
-            <h3 style="text-align:center"> Enterprise Resource Management</h3>
+          <h3 style="color:brown; padding-left: 30px"> MY CONTACTS</h3>
+            <a href="addcontacts.html" class="btn btn-success" style="float: right; text-align: " ><i class="material-icons" >&#xE147;</i> <span>Add New Contacts</span></a>
 			  <div style="width: 100%; margin-top: : 0; padding: 2%;">
-                  
         <ul class="tabs" data-persist="true">
-            <li><a href="#view1">Projects</a></li>
-            <li><a href="#view2">Peoples</a></li>
-            <li><a href="#view3">Equipments</a></li>
-            <li><a href="#view4">Schedules</a></li>
+            <li><a href="#view1">Supplier</a></li>
+            <li><a href="#view2">Vendor</a></li>
+            <li><a href="#view3">Partnership</a></li>
+            <li><a href="#view4">B2B</a></li>
         </ul>
         <div class="tabcontents">
-            <div id="view1">
-                <b>Projects</b>
             
+            <div id="view1">
+            <b>Supplier</b>
+             <?php
+                        $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
+                        $result = $mysqli->query("SELECT * FROM contacts where contacttype = 'Supplier'") or die($mysqli->error);
+                
+                ?>
+                	<table class="table justify-content-center" style="background-color:white">
+                    <thead style="background-color:green;color:white;font-weight:bold">
+                        
+						<tr>
+							<th>Company Name</th>
+							<th>Registration Number</th>
+                            <th>Email</th>
+							<th>Reviewed By</th>
+                            <th>Approved By</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
                  <?php
+                while ($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo $row['companyname']; ?></td>
+                        <td><?php echo $row['registerno']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                         <td>
+                        <?php if ($row['reviewedby'] == "Other") 
+                         echo $row['reviewother']; 
+                            else
+                        echo $row['reviewedby'];         
+                            ?>
+                        </td>                 
+                        <td>
+                            <?php if ($row['approvedby'] == "Other") 
+                            echo $row['approveother']; 
+                            else
+                            echo $row['approvedby'];     
+                            ?>
+                        </td>
+                        
+                        <td>
+                            
+                           <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
+                        
+                        <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
+                        </td>
+                    </tr>
+                <?php endwhile; ?>   
+                </table>    
+                
+            </div>
+                        <div id="view2">
+                <b>Vendor</b>
+            
+                	 <?php
                         $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
-                        $result = $mysqli->query("SELECT * FROM Projects") or die($mysqli->error);
+                        $result = $mysqli->query("SELECT * FROM contacts where contacttype = 'Vendor'") or die($mysqli->error);
+                
                 ?>
-               		<table class="table justify-content-center" style="background-color:white">
+                	<table class="table justify-content-center" style="background-color:white">
                     <thead style="background-color:green;color:white;font-weight:bold">
+                        
 						<tr>
-							<th>Project Name</th>
-							<th>Start Date</th>
-							<th>Deadline</th>
-							<th>Schedule(hrs/day)</th>
+							<th>Company Name</th>
+							<th>Registration Number</th>
+                            <th>Email</th>
+							<th>Reviewed By</th>
+                            <th>Approved By</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
-            <?php
+                 <?php
                 while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row['projectname']; ?></td>
-                        <td><?php echo $row['startdate']; ?></td>
-                        <td><?php echo $row['enddate']; ?></td>
-                        <td><?php echo $row['schedule']; ?></td>
+                        <td><?php echo $row['companyname']; ?></td>
+                        <td><?php echo $row['registerno']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td>
+                        <?php if ($row['reviewedby'] == "Other") 
+                         echo $row['reviewother']; 
+                            else
+                        echo $row['reviewedby'];         
+                            ?>
+                        </td>                 
+                        <td>
+                            <?php if ($row['approvedby'] == "Other") 
+                            echo $row['approveother']; 
+                            else
+                            echo $row['approvedby'];     
+                            ?>
+                        </td>
+                        
                         <td>
                             
                            <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
@@ -207,33 +267,51 @@
                         <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
                         </td>
                     </tr>
-                <?php endwhile; ?>    
-                </table>
+                <?php endwhile; ?>   
+                </table>    
                 
             </div>
-            <div id="view2">
-                <b>Peoples</b>
-                <?php
+                     <div id="view3">
+                <b>Partnership</b>
+            
+                	 <?php
                         $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
-                        $result = $mysqli->query("SELECT employees.employeename, equipments.purpose, employees.contactnumber, employees.designation FROM equipments, employees where equipments.empid = employees.employeeno") or die($mysqli->error);
+                        $result = $mysqli->query("SELECT * FROM contacts where contacttype = 'Partnership'") or die($mysqli->error);
+                
                 ?>
-               		<table class="table justify-content-center" style="background-color:white">
+                	<table class="table justify-content-center" style="background-color:white">
                     <thead style="background-color:green;color:white;font-weight:bold">
+                        
 						<tr>
-							<th>Name</th>
-							<th>Project Assigned</th>
-							<th>Contact No.</th>
-							<th>Role</th>
+							<th>Company Name</th>
+							<th>Registration Number</th>
+                            <th>Email</th>
+							<th>Reviewed By</th>
+                            <th>Approved By</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
-            <?php
+                 <?php
                 while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row['employeename']; ?></td>
-                        <td><?php echo $row['purpose']; ?></td>
-                        <td><?php echo $row['contactnumber']; ?></td>
-                        <td><?php echo $row['designation']; ?></td>
+                        <td><?php echo $row['companyname']; ?></td>
+                        <td><?php echo $row['registerno']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td>
+                        <?php if ($row['reviewedby'] == "Other") 
+                         echo $row['reviewother']; 
+                            else
+                        echo $row['reviewedby'];         
+                            ?>
+                        </td>                 
+                        <td>
+                            <?php if ($row['approvedby'] == "Other") 
+                            echo $row['approveother']; 
+                            else
+                            echo $row['approvedby'];     
+                            ?>
+                        </td>
+                        
                         <td>
                             
                            <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
@@ -241,33 +319,50 @@
                         <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
                         </td>
                     </tr>
-                <?php endwhile; ?>    
-                </table>
+                <?php endwhile; ?>   
+                </table>    
+                
             </div>
-            <div id="view3">
-                <b>Equipments</b>
-                <?php
+             <div id="view4">
+                <b>B2B</b>
+             <?php
                         $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
-                        $result = $mysqli->query("SELECT * FROM equipments") or die($mysqli->error);
+                        $result = $mysqli->query("SELECT * FROM contacts where contacttype = 'B2B'") or die($mysqli->error);
+                
                 ?>
-               		<table class="table justify-content-center" style="background-color:white">
-                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                	<table class="table justify-content-center" style="background-color:white">
                     <thead style="background-color:green;color:white;font-weight:bold">
+                        
 						<tr>
-							<th>System Purpose</th>
-							<th>Job Location</th>
-							<th>Equipment Needed</th>
-							<th>Total Equipments</th>
+							<th>Company Name</th>
+							<th>Registration Number</th>
+                            <th>Email</th>
+							<th>Reviewed By</th>
+                            <th>Approved By</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
-            <?php
+                 <?php
                 while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row['purpose']; ?></td>
-                        <td><?php echo $row['joblocation']; ?></td>
-                        <td><?php echo $row['equipmentneed']; ?></td>
-                        <td><?php echo $row['availableequip']; ?></td>
+                        <td><?php echo $row['companyname']; ?></td>
+                        <td><?php echo $row['registerno']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td>
+                        <?php if ($row['reviewedby'] == "Other") 
+                         echo $row['reviewother']; 
+                            else
+                        echo $row['reviewedby'];         
+                            ?>
+                        </td>                 
+                        <td>
+                            <?php if ($row['approvedby'] == "Other") 
+                            echo $row['approveother']; 
+                            else
+                            echo $row['approvedby'];     
+                            ?>
+                        </td>
+                        
                         <td>
                             
                            <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
@@ -275,52 +370,12 @@
                         <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
                         </td>
                     </tr>
-                <?php endwhile; ?>    
-                </table>
+                <?php endwhile; ?>   
+                </table>    
                 
             </div>
-            <div id="view4">
-                <b>Schedules</b>
-                <?php
-                        $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
-                        $result = $mysqli->query("SELECT * FROM equipments") or die($mysqli->error);
-                ?>
-               		<table class="table justify-content-center" style="background-color:white">
-                    <thead style="background-color:green;color:white;font-weight:bold">
-						<tr>
-							<th>Project Name(hrs/day)</th>
-							<th>Sun</th>
-							<th>Mon</th>
-							<th>Tue</th>
-							<th>Wed</th>
-                            <th>Thu</th>
-                            <th>Fri</th>
-                            <th>Sat</th>
-                            <th>Actions</th>
-						</tr>
-					</thead>
-            <?php
-                while ($row = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?php echo $row['purpose']; ?></td>
-                        <td><?php echo $row['sun']; ?></td>
-                        <td><?php echo $row['mon']; ?></td>
-                        <td><?php echo $row['tue']; ?></td>
-                        <td><?php echo $row['wed']; ?></td>
-                        <td><?php echo $row['thu']; ?></td>
-                        <td><?php echo $row['fri']; ?></td>
-                        <td><?php echo $row['sat']; ?></td>
-                        <td>
-                            
-                           <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
-                        
-                        <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
-                        </td>
-                    </tr>
-                <?php endwhile; ?>    
-                </table>
-                
-            </div>
+            
+            
         </div>
     </div>
                     

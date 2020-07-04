@@ -206,10 +206,16 @@
             </tr>
             <tr>
  
-            <td align="left" valign="top" width="41%">Available Equipment</td>
+            <td align="left" valign="top" width="41%">Avaialble Equipment</td>
             <td width="57%">
-               
-                <input type="text" value="" name="availequip" size="24"></br> </br></td> </br>
+             
+                 <?php
+                        $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
+                        $result = $mysqli->query("SELECT * FROM equipments") or die($mysqli->error);
+                       while($row = $result->fetch_assoc()):
+                       endwhile;
+                ?>
+                <input type="text" value="<?php echo $row['availableequip']; ?>" name="availequip" size="24"></br> </br></td> </br>
              
             </tr>
                 <tr>

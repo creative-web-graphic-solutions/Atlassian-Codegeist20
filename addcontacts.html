@@ -30,31 +30,29 @@
         
 /*        .footer{ height:35%; background:blue;bottom:0; position: absolute; width: 100%}*/
         
-*/
-        
-   
+*/   
     </style>    
-<style>
-     .weektable {
-      border-collapse: collapse;
-      border: 2px solid rgb(200,200,200);
-      letter-spacing: 1px;
-/*      font-size: 1.2rem;*/
-    }
-
-    .weektable td, th {
-      border: 1px solid rgb(190,190,190);
-      padding: 10px 20px;
-    }
-
-    .weektable td {
-      text-align: center;
-    }
-
-    .weektable caption {
-      padding: 10px;
-    }
-    </style>
+<script>
+$(document).ready(function() {
+    $("#reviewby").on("change", function(){
+   if ($(this).val() === "Other") {
+            $("#ReviewotherName").show();
+        }
+        else {
+            $("#ReviewotherName").hide();
+        }
+});    
+    
+    $("#approveby").on("change", function(){
+   if ($(this).val() === "Other") {
+            $("#ApproveotherName").show();
+        }
+        else {
+            $("#ApproveotherName").hide();
+        }
+});    
+});    
+</script>         	
 	
 </head>
 <body>
@@ -94,7 +92,7 @@
 	<main class="cd-main-content">
 		<nav class="cd-side-nav">
 			<ul>
-						<li class="cd-label">Main</li>
+				<li class="cd-label">Main</li>
                 	<li class="has-children overview">
 					<a href="employeelist.php">Employee</a>
 					
@@ -137,13 +135,11 @@
 				</li>
 
 				<li class="has-children overview">
-					<a href="#0">My Contacts</a>
+					<a href="addcontacts.php">My Contacts</a>
 					
 					<ul>
-						<li><a href="#0">Supplier</a></li>
-						<li><a href="#0">Vendor</a></li>
-						<li><a href="#0">Partnership</a></li>
-                        <li><a href="#0">B2B</a></li>                        
+						<li><a href="addcontacts.php">Add Contacts</a></li>
+						                 
 					</ul>
 				</li>
 			
@@ -157,10 +153,8 @@
 					<a href="#0">Project Deployment</a>
 					
 					<ul>
-						<li><a href="#0">Active Projects</a></li>
-						<li><a href="#0">Project Managers</a></li>
-						<li><a href="#0">Project Health</a></li>
-                        <li><a href="#0">Value</a></li>
+						<li><a href="activeproject.php">Active Projects</a></li>
+						
 					</ul>
 				</li>
 
@@ -175,84 +169,70 @@
 
 		<div class="content-wrapper" >
 
-         <form action="addsystems.php" method="POST" enctype="multipart/form-data" style="margin-left: 20%; ">
-        <table align="center" width="90%"  border="5">
+         <form action="addcontacts.php" method="POST" enctype="multipart/form-data" style="margin-left: 20%; ">
+        <table align="center" width="60%"   cellspacing="3" cellpadding="5" border="5">
             <tr>
-                <td colspan="2" align="center"><h2 style="font-size:30px; color:brown; margin-top: 1%; font: bold">Allocate Systems and Projects</h2> </br> </td>
+                <td colspan="2" align="center"><h2 style="font-size:30px; color:brown; margin-top: 4%; font: bold">Add New Contacts </h2> </br> </td>
  
             </tr>
              <tr>
-                <td align="left" valign="top" width="41%" >Project Name <span style="color:red">*</span></td>
+                <td align="left" valign="top" width="41%" >Company Name<span style="color:red">*</span></td>
                 <td width="57%">
-                    <input type="text" value="" name="projectname"  size="40"> </br> </br></td> 
+                    <input type="text" value="" name="companyname"  size="24"> </br> </br></td> 
             </tr>
             <tr>
-                <td align="left" valign="top" width="41%">Equipments Needed<span style="color:red">*</span></td>
+                <td align="left" valign="top" width="41%">Registration Number<span style="color:red">*</span></td>
  
-                <td width="57%"><input type="text" value="" name="equipneed" size="24"></br> </br></td>
+                <td width="57%"><input type="text" value="" name="registernumber" size="24"></br> </br></td>
             </tr>
+            <tr>
+                <td align="left" valign="top" width="41%">Email<span style="color:red">*</span></td>
+ 
+                <td width="57%"><input type="text" value="" name="email" size="24"></br> </br></td>
+            </tr>
+                     
            <tr>
-                <td align="left" valign="top" width="41%">Job Location</td>
-                <td width="57%" ><select name="joblocation" style="width:65%" >
-                    <option value="Dev center">Dev center</option>
-                    <option value="Conference">Conference</option>
-                    <option value="Reception">Reception</option>
-                    <option value="Dev center2">Dev center2</option>
-                    <option value="Dev center3">Dev center3</option>
-                    <option value="Dev center4">Dev center4</option>
-                    <option value="Dev center5">Dev center5</option>    
+                <td align="left" valign="top" width="41%">Contact Type</td>
+                <td width="57%"><select name="contacttype">
+                    <option value="Supplier">Supplier</option>
+                    <option value="Vendor">Vendor</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="B2B">B2B</option>
+                        
                     </select></br> </br></td>
   
             </tr>
             <tr>
- 
-            <td align="left" valign="top" width="41%">Available Equipment</td>
-            <td width="57%">
-               
-                <input type="text" value="" name="availequip" size="24"></br> </br></td> </br>
-             
+                <td align="left" valign="top" width="41%">Reviewed By</td>
+                <td width="57%"><select id="reviewby" name="reviewby">
+                    <option value="Admin">Admin</option>
+                    <option value="HR">HR</option>
+                    <option value="Devcenter">Devcenter</option>
+                    <option value="Other">Other</option>
+                  
+                    </select>
+                    <input type="text" id="ReviewotherName" name="reviewother" style="display: none"> </input>
+                    </br> </br></td>
+  
             </tr>
-                <tr>
- 
-            <td align="left" valign="top" width="41%">Project Assigned To</td>
-            <td width="57%">
-                <input type="text" value="" name="projectassign" size="24"></td> 
-             <td align="left" valign="top" width="40%">Emp&nbsp;Id</td>
-            <td>        
-                <input type="text" value="" name="empid"  > </br> </br> </td> 
-            </tr> 
-           
-           
- <table class="weektable">
-      <tr>
-        <td>&nbsp;</td>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
-        <th>Sun</th>
-      </tr>
-      <tr>
-        <th>Schedules</th>
-        <td><input type="text" value="" name="sun" size="3"> </td>    </td>
-        <td><input type="text" value="" name="mon" size="3"></td>
-        <td><input type="text" value="" name="tue" size="3"></td>
-        <td><input type="text" value="" name="wed" size="3"></td>
-        <td><input type="text" value="" name="thu" size="3"> </td>
-        <td><input type="text" value="" name="fri" size="3"> </td>
-        <td><input type="text" value="" name="sat" size="3"></td>
-      </tr>
-</table>       
-</br>
-
- 
-            
-                <td >
+            <tr>
+                <td align="left" valign="top" width="41%">Approved By</td>
+                <td width="57%"><select id="approveby" name="approveby">
+                    <option value="Admin">Admin</option>
+                    <option value="HR">HR</option>
+                    <option value="Devcenter">Devcenter</option>
+                    <option value="Other">Other</option>
+                                        
+                    </select>
+                    <input type="text" id="ApproveotherName" name="approveother" style="display: none"> </input>
+                    </br> </br></td>
+  
+            </tr>
+            <tr>
+                <td colspan="2">
                     <p align="center">
-                       <input type="submit" name="submit" style="height: color:brown"  class="btn btn-info "value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="reset" value="Reset All" class="btn btn-info " name="reset"></td>
+                       <input type="submit" name="submit" style="height: color:brown; margin-left:30%"  class="btn btn-info "value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="reset" value="Reset All" class="btn btn-info " name="B5"></td>
             </tr>
  
         </table>

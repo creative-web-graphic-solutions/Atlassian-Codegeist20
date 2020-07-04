@@ -6,13 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
-    
+    <script src="js/tabcontent.js" type="text/javascript"></script>
+    <link href="css/resources.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/dashboardstyle.css"> <!-- Resource style -->
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/tabcontent.js"> </script>
     <style>
      *{margin: 0px; padding: 0px; font-size: 15px; list-style: none}
         html, body{ background-color: #16F5E8; width: 100%; height:100%; position: relative;}
@@ -31,30 +33,10 @@
 /*        .footer{ height:35%; background:blue;bottom:0; position: absolute; width: 100%}*/
         
 */
-        
+
    
     </style>    
-<style>
-     .weektable {
-      border-collapse: collapse;
-      border: 2px solid rgb(200,200,200);
-      letter-spacing: 1px;
-/*      font-size: 1.2rem;*/
-    }
-
-    .weektable td, th {
-      border: 1px solid rgb(190,190,190);
-      padding: 10px 20px;
-    }
-
-    .weektable td {
-      text-align: center;
-    }
-
-    .weektable caption {
-      padding: 10px;
-    }
-    </style>
+     	
 	
 </head>
 <body>
@@ -173,91 +155,68 @@
 -->
 		</nav>
 
-		<div class="content-wrapper" >
-
-         <form action="addsystems.php" method="POST" enctype="multipart/form-data" style="margin-left: 20%; ">
-        <table align="center" width="90%"  border="5">
-            <tr>
-                <td colspan="2" align="center"><h2 style="font-size:30px; color:brown; margin-top: 1%; font: bold">Allocate Systems and Projects</h2> </br> </td>
- 
-            </tr>
-             <tr>
-                <td align="left" valign="top" width="41%" >Project Name <span style="color:red">*</span></td>
-                <td width="57%">
-                    <input type="text" value="" name="projectname"  size="40"> </br> </br></td> 
-            </tr>
-            <tr>
-                <td align="left" valign="top" width="41%">Equipments Needed<span style="color:red">*</span></td>
- 
-                <td width="57%"><input type="text" value="" name="equipneed" size="24"></br> </br></td>
-            </tr>
-           <tr>
-                <td align="left" valign="top" width="41%">Job Location</td>
-                <td width="57%" ><select name="joblocation" style="width:65%" >
-                    <option value="Dev center">Dev center</option>
-                    <option value="Conference">Conference</option>
-                    <option value="Reception">Reception</option>
-                    <option value="Dev center2">Dev center2</option>
-                    <option value="Dev center3">Dev center3</option>
-                    <option value="Dev center4">Dev center4</option>
-                    <option value="Dev center5">Dev center5</option>    
-                    </select></br> </br></td>
-  
-            </tr>
-            <tr>
- 
-            <td align="left" valign="top" width="41%">Available Equipment</td>
-            <td width="57%">
-               
-                <input type="text" value="" name="availequip" size="24"></br> </br></td> </br>
-             
-            </tr>
-                <tr>
- 
-            <td align="left" valign="top" width="41%">Project Assigned To</td>
-            <td width="57%">
-                <input type="text" value="" name="projectassign" size="24"></td> 
-             <td align="left" valign="top" width="40%">Emp&nbsp;Id</td>
-            <td>        
-                <input type="text" value="" name="empid"  > </br> </br> </td> 
-            </tr> 
-           
-           
- <table class="weektable">
-      <tr>
-        <td>&nbsp;</td>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
-        <th>Sun</th>
-      </tr>
-      <tr>
-        <th>Schedules</th>
-        <td><input type="text" value="" name="sun" size="3"> </td>    </td>
-        <td><input type="text" value="" name="mon" size="3"></td>
-        <td><input type="text" value="" name="tue" size="3"></td>
-        <td><input type="text" value="" name="wed" size="3"></td>
-        <td><input type="text" value="" name="thu" size="3"> </td>
-        <td><input type="text" value="" name="fri" size="3"> </td>
-        <td><input type="text" value="" name="sat" size="3"></td>
-      </tr>
-</table>       
-</br>
-
- 
+		<div class="content-wrapper">
+            <?php require_once 'resourceprocess.php'; ?>
+            <?php if (isset($_SESSION['message'])): ?>
+            <div class="alert alert-<?=$_SESSION['msg_type']?>">
+                <?php 
+                    echo $_SESSION['message']; 
+                    unset($_SESSION['message']);
+                ?>
+            </div>
+        <?php endif ?>
+			  <div style="width: 100%; margin-top: : 0; padding: 2%;">
+        <ul class="tabs" data-persist="true">
+            <li><a href="#view1">Add User</a></li>
+            <li><a href="#view2">Imported Users from Active directory</a></li>
             
-                <td >
-                    <p align="center">
-                       <input type="submit" name="submit" style="height: color:brown"  class="btn btn-info "value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="reset" value="Reset All" class="btn btn-info " name="reset"></td>
-            </tr>
- 
-        </table>
-    </form>
+        </ul>
+        <div class="tabcontents">
 
+            <div id="view1">
+                
+            </div>
+                        <div id="view2">
+                <b>Active Users</b>
+            
+                 <?php
+                        $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
+                        $result = $mysqli->query("SELECT * FROM usermgt") or die($mysqli->error);
+                ?>
+               		<table class="table justify-content-center" style="background-color:white">
+                    <thead style="background-color:green;color:white;font-weight:bold">
+						<tr>
+							<th>User Name</th>
+							<th>Emp Id</th>
+							<th>Description</th>
+                            <th>Email Id</th>
+							<th>Role</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+            <?php
+                while ($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo $row['empname']; ?></td>
+                        <td><?php echo $row['empid']; ?></td>
+                        <td><?php echo $row['description']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['role']; ?></td>
+                        <td>
+                            
+                           <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
+                        
+                        <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
+                        </td>
+                    </tr>
+                <?php endwhile; ?>    
+                </table>
+                
+            </div>
+        </div>
+    </div>
+                    
+            
 		</div> <!-- .content-wrapper -->
 	
         
@@ -267,14 +226,14 @@
         <div class="col-sm-6 ">
           <h5 class="white-text">Project IIM</h5>
           <p class="grey-text text-lighten-4">This project is being developed for codegiest hackathon. All tasks, progress and features are aligned to fit within this deadline.</p>
-            <p style="color:white"> IIM Team</p>
+
 
         </div>
         <div class="col-sm-3 ">
           <h5 class="white-text">Settings</h5>
           <ul>
             <li><a class="white-text" href="#!" style="color: black">Home Page</a></li>
-            
+            <li><p style="color:white"> IIM Team</p></li>
             
           </ul>
         </div>
