@@ -42,7 +42,7 @@
 <body>
 	<header class="cd-main-header">
 <!--		<a href="#0" class="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></a>-->
-		<a id="logo-container" href="index.html" class="brand-logo" style="color: white">IIM Logo</a>
+		<a id="logo-container" href="index.html" class="brand-logo" style="color: white"><img src="img/IIM.jpg"></a>
 		<div class="cd-search is-hidden">
 			<form action="#0">
 				<input type="search" placeholder="Search..." >
@@ -76,9 +76,9 @@
 	<main class="cd-main-content">
 		<nav class="cd-side-nav">
 			<ul>
-						<li class="cd-label">Main</li>
-                	<li class="has-children overview">
-					<a href="employeelist.php">Employee</a>
+				<li class="cd-label">Main</li>
+                	<li class="has-children ">
+					<a href="employeelist.php"><img src="img/employeees.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Employees </a>
 					
 					<ul>
 						<li><a href="employeeadd.html">Add Employee</a></li>
@@ -86,63 +86,55 @@
 					</ul>
 				</li>
 				<li class="has-children overview">
-					<a href="resources.php">Resources</a>
+					<a href="resources.php"><img src="img/resource.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Resources</a>
 					
 					<ul>
 						<li><a href="Projects.html">Add Project</a></li>
-						<li><a href="equipments.html">Add Equipment</a></li>
+						<li><a href="equipments.php">Add Equipment</a></li>
                         
 					</ul>
 				</li>
 			    <li class="has-children overview">
-					<a href="#0">User Management</a>
+					<a href="usermanagement.php"><img src="img/usermgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;User Management</a>
 					
-					<ul>
-						<li><a href="#0">Add New User</a></li>
-				   </ul>
+					
 				</li>
                 <li class="has-children overview">
-					<a href="#0">Groups Management</a>
+					<a href="groupmanagement.php"><img src="img/groupmgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Group View</a>
 					
 					<ul>
-						<li><a href="#0">Create New Group</a></li>
+						<li><a href="addgroup.html">Create New Group</a></li>
 						
 					</ul>
 				</li>
                 <li class="has-children overview">
-					<a href="#0">Apps & Integration</a>
+					<a href="appsintegration.html"><img src="img/appintegrate.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Apps & Integration</a>
 					
 					<ul>
-						<li><a href="#0">Installed Apps</a></li>
+						<li><a href="appinstall.html">Installed Apps</a></li>
 						
 					</ul>
 				</li>
 
 				<li class="has-children overview">
-					<a href="#0">My Contacts</a>
-					
+					<a href="mycontacts.php"><img src="img/mycontacts.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;My Contacts</a>
 					<ul>
-						<li><a href="#0">Supplier</a></li>
-						<li><a href="#0">Vendor</a></li>
-						<li><a href="#0">Partnership</a></li>
-                        <li><a href="#0">B2B</a></li>                        
+						<li><a href="addcontacts.html">Add Contacts</a></li>
+						                   
 					</ul>
 				</li>
 			
             <li class="has-children overview">
-					<a href="#0">Ticketing & Support</a><ul>
+					<a href="mysupportticket.html"><img src="img/ticket.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Ticketing & Support</a><ul>
                 <li></li>
                 </ul>			
 					
 				</li>
             <li class="has-children overview">
-					<a href="#0">Project Deployment</a>
-					
+					<a href="projectdeployment.php"><img src="img/projectview.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Project View</a>
 					<ul>
-						<li><a href="#0">Active Projects</a></li>
-						<li><a href="#0">Project Managers</a></li>
-						<li><a href="#0">Project Health</a></li>
-                        <li><a href="#0">Value</a></li>
+						<li><a href="activeproject.php">Add Active Project</a></li>
+						
 					</ul>
 				</li>
 
@@ -156,17 +148,18 @@
 		</nav>
 
 		<div class="content-wrapper">
-            
-            <?php require_once 'resourceprocess.php'; ?>
-            <?php if (isset($_SESSION['message'])): ?>
+                    <?php require_once 'updateresource.php'; ?>
+        
+        <?php if (isset($_SESSION['message'])): ?>
             <div class="alert alert-<?=$_SESSION['msg_type']?>">
                 <?php 
                     echo $_SESSION['message']; 
                     unset($_SESSION['message']);
                 ?>
             </div>
-        <?php endif ?>
-            <h3 style="text-align:center"> Enterprise Resource Management</h3>
+        <?php endif ?> 
+            
+           <h3 style="text-align:center"> Enterprise Resource Management</h3>
 			  <div style="width: 100%; margin-top: : 0; padding: 2%;">
                   
         <ul class="tabs" data-persist="true">
@@ -183,14 +176,16 @@
                         $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
                         $result = $mysqli->query("SELECT * FROM Projects") or die($mysqli->error);
                 ?>
+                    <form action="updateresource.php" method="post">
                		<table class="table justify-content-center" style="background-color:white">
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <thead style="background-color:green;color:white;font-weight:bold">
 						<tr>
 							<th>Project Name</th>
 							<th>Start Date</th>
 							<th>Deadline</th>
 							<th>Schedule(hrs/day)</th>
-							<th>Actions</th>
+<!--							<th>Actions</th>-->
 						</tr>
 					</thead>
             <?php
@@ -200,60 +195,82 @@
                         <td><?php echo $row['startdate']; ?></td>
                         <td><?php echo $row['enddate']; ?></td>
                         <td><?php echo $row['schedule']; ?></td>
-                        <td>
+<!--                        <td>-->
+<!--
+                              <button name="update" type="submit" class="btn btn-info" style="color:brown"> Save </button>
+                            <button name="delete" type="cancel" class="btn btn-info" style="color:brown"> Delete </button>
                             
+-->
+<!--
                            <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
                         
                         <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
-                        </td>
+-->
+<!--                        </td>-->
                     </tr>
                 <?php endwhile; ?>    
                 </table>
-                
+                </form>
             </div>
             <div id="view2">
                 <b>Peoples</b>
                 <?php
                         $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
-                        $result = $mysqli->query("SELECT employees.employeename, equipments.purpose, employees.contactnumber, employees.designation FROM equipments, employees where equipments.empid = employees.employeeno") or die($mysqli->error);
+                        $result = $mysqli->query("SELECT employees.employeename, equipments.purpose, employees.contactnumber, employees.designation FROM equipments, employees where equipments.projectassign = employees.employeename") or die($mysqli->error);
+                        $id=0;
                 ?>
+                    <form action="updateresource.php" method="post">
                		<table class="table justify-content-center" style="background-color:white">
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <thead style="background-color:green;color:white;font-weight:bold">
 						<tr>
 							<th>Name</th>
 							<th>Project Assigned</th>
 							<th>Contact No.</th>
 							<th>Role</th>
-							<th>Actions</th>
+							
 						</tr>
 					</thead>
             <?php
                 while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row['employeename']; ?></td>
-                        <td><?php echo $row['purpose']; ?></td>
-                        <td><?php echo $row['contactnumber']; ?></td>
-                        <td><?php echo $row['designation']; ?></td>
-                        <td>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                        <td><input style="border-color: transparent;" value="<?php echo $row['employeename']; ?>" name="empname"></td>
+                        <td><input style="border-color: transparent;" value="<?php echo $row['purpose']; ?>" name="purpose"></td>
+                        <td><input style="border-color: transparent;" value="<?php echo $row['contactnumber']; ?>" name="contactnumber"></td>
+                        <td><input style="border-color: transparent;" value="<?php echo $row['designation']; ?>" name="designation"></td>
+<!--                        <td>-->
                             
+<!--
+                          <button name="empupdate" type="submit" class="btn btn-info" style="color:brown"> Save </button>
+                            <button name="delete" type="cancel" class="btn btn-info" style="color:brown"> Delete </button>
+                                
+-->
+<!--
                            <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
                         
                         <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
-                        </td>
+-->
+<!--                        </td>-->
                     </tr>
                 <?php endwhile; ?>    
                 </table>
+<!--                </form>        -->
             </div>
             <div id="view3">
                 <b>Equipments</b>
+  
                 <?php
                         $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
                         $result = $mysqli->query("SELECT * FROM equipments") or die($mysqli->error);
+                        $id=0;
                 ?>
+                    <form action="updateresource.php" method="post">
                		<table class="table justify-content-center" style="background-color:white">
-                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                        
                     <thead style="background-color:green;color:white;font-weight:bold">
 						<tr>
+                            <th>Sl.No</th>
 							<th>System Purpose</th>
 							<th>Job Location</th>
 							<th>Equipment Needed</th>
@@ -264,30 +281,39 @@
             <?php
                 while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row['purpose']; ?></td>
-                        <td><?php echo $row['joblocation']; ?></td>
-                        <td><?php echo $row['equipmentneed']; ?></td>
-                        <td><?php echo $row['availableequip']; ?></td>
+                        <td><input style="width:20px" value="<?php echo $row['id']; ?>" name="id" > </td>
+                        <td  contenteditable="true"><input style="border-color: transparent;" value="<?php echo $row['purpose']; ?>" name="purpose"></td>
+                        <td  contenteditable="true"><input style="border-color: transparent;" value="<?php echo $row['joblocation']; ?>" name="joblocation"></td>
+                        <td  contenteditable="true"><input style="border-color: transparent;" value="<?php echo $row['equipmentneed']; ?>" name="equipmentneed"></td>
+                        <td  contenteditable="true"><input style="border-color: transparent;" value="<?php echo $row['availableequip']; ?>" name="availableequip"></td>
                         <td>
                             
-                           <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
+<!--                           <button name="update1" type="submit" class="btn btn-info" style="color:brown"> Save </button>-->
+                           
+                            
                         
-                        <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
+                           <button name="submit" type="submit" class="btn btn-info"> <a href="updateresource.php?update=<?php echo $row['id']; ?>&purpose=<?php echo $_POST['purpose']; ?>" style="color: brown">Save </a> </button>
+                         <button name="delete" type="cancel" class="btn btn-info" style="color:brown"> Delete </button>
+<!--                        <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> -->
                         </td>
                     </tr>
                 <?php endwhile; ?>    
                 </table>
-                
+                </form>
             </div>
             <div id="view4">
                 <b>Schedules</b>
                 <?php
                         $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
                         $result = $mysqli->query("SELECT * FROM equipments") or die($mysqli->error);
+                        $id=0;
                 ?>
+                    <form action="updateresource.php" method="post">
                		<table class="table justify-content-center" style="background-color:white">
+                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                     <thead style="background-color:green;color:white;font-weight:bold">
 						<tr>
+                            <td>Sl.No</td>
 							<th>Project Name(hrs/day)</th>
 							<th>Sun</th>
 							<th>Mon</th>
@@ -302,24 +328,27 @@
             <?php
                 while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo $row['purpose']; ?></td>
-                        <td><?php echo $row['sun']; ?></td>
-                        <td><?php echo $row['mon']; ?></td>
-                        <td><?php echo $row['tue']; ?></td>
-                        <td><?php echo $row['wed']; ?></td>
-                        <td><?php echo $row['thu']; ?></td>
-                        <td><?php echo $row['fri']; ?></td>
-                        <td><?php echo $row['sat']; ?></td>
+                        <td><input style="width:20px" value="<?php echo $row['id']; ?>" name="id" > </td>
+                        <td contenteditable="true"><input style="border-color: transparent; " value="<?php echo $row['purpose']; ?>" name="purpose"></td>
+                        <td contenteditable="true"><input style="border-color: transparent; width:20px" value="<?php echo $row['sun']; ?>" name="sun"></td>
+                        <td contenteditable="true"><input style="border-color: transparent; width:20px" value="<?php echo $row['mon']; ?>" name="mon"></td>
+                        <td contenteditable="true"><input style="border-color: transparent;width:20px" value="<?php echo $row['tue']; ?>" name="tue"></td>
+                        <td contenteditable="true"><input style="border-color: transparent;width:20px" value="<?php echo $row['wed']; ?>" name="wed"></td>
+                        <td contenteditable="true"><input style="border-color: transparent;width:20px" value="<?php echo $row['thu']; ?>" name="thu"></td>
+                        <td contenteditable="true"><input style="border-color: transparent;width:20px" value="<?php echo $row['fri']; ?>" name="fri"></td>
+                        <td contenteditable="true"><input style="border-color: transparent;width:20px" value="<?php echo $row['sat']; ?>" name="sat"></td>
                         <td>
                             
-                           <button name="edit" class="btn btn-info"> <a href=""  data-toggle="modal" data-dismiss="modal" style="color: brown" >Edit</a> </button>
-                        
-                        <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> 
+<!--                              <button name="update2" type="submit" class="btn btn-info" style="color:brown"> Save </button>-->
+                         
+                           <button name="update2" class="btn btn-info" style="color: brown" >Save</a> </button>
+                               <button name="delete" type="cancel" class="btn btn-info" style="color:brown"> Delete </button>
+<!--                        <button name="delete" class="btn btn-info " ><a href="resources.php?delete=<?php echo $row['id']; ?>" style="color: brown">Delete</a> </button> -->
                         </td>
                     </tr>
                 <?php endwhile; ?>    
                 </table>
-                
+                </form>
             </div>
         </div>
     </div>

@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <title>IT Infrastructure Management - CIO's Desk</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/dashboardstyle.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+    
+    <style>
+     *{margin: 0px; padding: 0px; font-size: 15px; list-style: none}
+        html, body{ background-color: #16F5E8; width: 100%; height:100%; position: relative;}
+        .header{ height:20%; background:blue; position: relative;}
+        .page-footer{
+        position: fixed;
+  margin-left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: blue;
+  color: white;
+/*  text-align: center;*/
+  padding-left: 14%;            
+    }    
+        
+/*        .footer{ height:35%; background:blue;bottom:0; position: absolute; width: 100%}*/
+        
+*/  
+    </style>    
+
+<style>
+
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+.myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+.myUL li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+.myUL li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+.myUL li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+.myUL li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+.myUL li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style the header */
+.header {
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+</style>    
+     	
+	
+</head>
+<body>
+	<header class="cd-main-header">
+<!--		<a href="#0" class="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></a>-->
+		<a id="logo-container" href="index.html" style="margin-right: 10%" ><img src="img/IIM.jpg" style="color: white; margin-top: 0; position: absolute; "></a>
+		<div class="cd-search ">
+			<form action="#0">
+				<input type="search" placeholder="Search..." >
+			</form>
+		</div> <!-- cd-search -->
+
+		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+		<nav class="cd-nav">
+			<ul class="cd-top-nav">
+				<li><a href="email.html">Mail</a></li>
+				<li><a href="Notification.html">Notification</a></li>
+				<li class="has-children account">
+					<a href="#0">
+						<img src="img/cd-avatar.png" alt="avatar">
+						My Profile
+					</a>
+
+					<ul>
+
+						<li><a href="#0">Edit Account</a></li>
+						<li><a href="#0">Settings</a></li>
+						<li><a href="#0">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header> <!-- .cd-main-header -->
+
+<div class="dashboard-container">    
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">Main</li>
+                	<li class="has-children ">
+					<a href="employeelist.php"><img src="img/employeees.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Employees </a>
+					
+					<ul>
+						<li><a href="employeeadd.html">Add Employee</a></li>
+						
+					</ul>
+				</li>
+				<li class="has-children overview">
+					<a href="resources.php"><img src="img/resource.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Resources</a>
+					
+					<ul>
+						<li><a href="Projects.html">Add Project</a></li>
+						<li><a href="equipments.php">Add Equipment</a></li>
+                        
+					</ul>
+				</li>
+			    <li class="has-children overview">
+					<a href="usermanagement.php"><img src="img/usermgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;User Management</a>
+					
+					
+				</li>
+                <li class="has-children overview">
+					<a href="groupmanagement.php"><img src="img/groupmgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Group View</a>
+					
+					<ul>
+						<li><a href="addgroup.html">Create New Group</a></li>
+						
+					</ul>
+				</li>
+                <li class="has-children overview">
+					<a href="appsintegration.html"><img src="img/appintegrate.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Apps & Integration</a>
+					
+					<ul>
+						<li><a href="appinstall.html">Installed Apps</a></li>
+						
+					</ul>
+				</li>
+
+				<li class="has-children overview">
+					<a href="mycontacts.php"><img src="img/mycontacts.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;My Contacts</a>
+					<ul>
+						<li><a href="addcontacts.html">Add Contacts</a></li>
+						                   
+					</ul>
+				</li>
+			
+            <li class="has-children overview">
+					<a href="mysupportticket.html"><img src="img/ticket.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Ticketing & Support</a><ul>
+                <li></li>
+                </ul>			
+					
+				</li>
+            <li class="has-children overview">
+					<a href="projectdeployment.php"><img src="img/projectview.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Project View</a>
+					<ul>
+						<li><a href="activeproject.php">Add Active Project</a></li>
+						
+					</ul>
+				</li>
+
+			
+<!--
+			<ul>
+				<li class="cd-label">Action</li>
+				<li class="action-btn"><a href="#0">+ Button</a></li>
+			</ul>
+-->
+		</nav>
+
+		<div class="content-wrapper">
+            
+<!--    <div id="myDIV" class="header">-->
+  <h2 style="margin:5px">My Installed Application</h2>
+<!--  <input type="text" id="myInput" placeholder="Title...">-->
+<!--  <span onclick="newElement()" class="addBtn">Add</span>-->
+<!--</div>-->
+
+<ul class="myUL">
+  <li><img src="img/jira-icon.svg" style="width:20px; height20px"> <span style="padding-left: 20px">Atlassian Jira</span></li>
+  <li ><img src="img/visme-icon.svg" style="width:20px; height20px"> <span style="padding-left: 20px">  Visme</li>
+  <li><img src="img/outlook.svg" style="width:20px; height20px"> <span style="padding-left: 20px">Microsoft Outlook</li>
+  <li><img src="img/liveweb-icon.svg" style="width:20px; height20px"> <span style="padding-left: 20px">Liveweb CRM</li>
+  <li ><img src="img/leadpages-icon.svg" style="width:20px; height20px"> <span style="padding-left: 20px">Lead Pages</li>
+  <li><img src="img/todoist-icon-copy.svg" style="width:20px; height20px"> <span style="padding-left: 20px">Todoist Project</li>
+</ul>
+
+
+<script>
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>        
+            
+            
+            
+		</div> <!-- .content-wrapper -->
+	
+        
+<footer class="page-footer" >
+ 
+      <div class="row">
+        <div class="col-sm-6 ">
+          <h5 class="white-text">Project IIM</h5>
+          <p class="grey-text text-lighten-4">This project is being developed for codegiest hackathon. All tasks, progress and features are aligned to fit within this deadline.</p>
+
+
+        </div>
+        <div class="col-sm-3 ">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!" style="color: black">Home Page</a></li>
+            <li><p style="color:white"> IIM Team</p></li>
+            
+          </ul>
+        </div>
+       
+      </div>
+</footer>    
+</main> <!-- .cd-main-content -->
+</div>
+     
+ 
+      
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/jquery.menu-aim.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>

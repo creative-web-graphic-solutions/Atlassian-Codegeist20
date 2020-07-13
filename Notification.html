@@ -9,10 +9,12 @@
     
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/dashboardstyle.css"> <!-- Resource style -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+    
     <style>
      *{margin: 0px; padding: 0px; font-size: 15px; list-style: none}
         html, body{ background-color: #16F5E8; width: 100%; height:100%; position: relative;}
@@ -27,105 +29,138 @@
 /*  text-align: center;*/
   padding-left: 14%;            
     }    
+        
+/*        .footer{ height:35%; background:blue;bottom:0; position: absolute; width: 100%}*/
+        
+*/  
+    </style>    
 
-.alert {
-  padding: 20px;
-  background-color: red;
+<style>
+
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+#myUL li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+#myUL li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+#myUL li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+#myUL li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+#myUL li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
   color: white;
 }
 
-
-.alert.success {background-color: #4CAF50;}
-.alert.info {background-color: #2196F3;}
-.alert.warning {background-color: #ff9800;}
-        
-.closebtn {
-  margin-left: 15px;
+/* Style the header */
+.header {
+  background-color:lightgreen;
+  padding: 30px 40px;
   color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
+  border-radius: 0;
 }
 
-.closebtn:hover {
-  color: black;
+.addBtn:hover {
+  background-color: #bbb;
 }
-    
-.messages{
-    font-size:18px;
-    color: white;
-    height: 50px;           
-}        
-        
-</style>        
-    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-
-       function appendText() {
-//  var x = document.getElementById("myBR");
-//  x.style.display = "none";           
-  var title = $("#title").val();
-  var content = $("#content").val();
-  var type = $("#type").val();
-  var container = document.getElementsByClassName("content-wrapper");    
-  var section =document.getElementsByClassName("results");    
-//  var markup = "<div class='results'><button class='closebtn' onclick='closeAlert(this)'>X</button>&nbsp;&nbsp;" + type + ' ' + title + ' ' + content + "</div>";
-    var markup = "<div class='results alert success'><span class='closebtn'>&times;</span> <strong>Success!</strong>" + type + ' ' +title + ' ' +content + "</div>" ;       
-  
-  if (type === 'success') {
-    $('.messages').css({
-      "background-color": "green"
-    });
-  } else if (type === 'warning') {
-    $('.messages').css({
-      "background-color": "yellow"
-    });
-  } else if (type === 'error') {
-    $('.messages').css({
-      "background-color": "red"
-    });
-  } else if (type === 'info') {
-    $('.messages').css({
-      "background-color": "blue"
-    });
-  }
-  $(".messages").html(markup);
-
-  container.appendChild(section.cloneNode(true));
-}
-
-  function closeAlert(_this) {
-  $(_this).parent(alert).remove();
-    $(_this).remove();
-}       
-    
-// Get the div element with id="notify-wrap"
-  var div = document.getElementById("notify-wrap"); 
-
-    
-// Get all results elements inside of notify-wrap div
-  var divs = div.getElementsByClassNameName("results");  
-    
-    
- // Create a loop which will insert a new div element before each element in div, starting from the second span element
-  var i;
-  for (i = 1; i < divs.length; i++) {
-    var newElem = document.createElement("div");
-    div.insertBefore(newElem, divs[i]);
-  }
-   
-</script>         	
+</style>    
+     	
 	
 </head>
 <body>
 	<header class="cd-main-header">
 <!--		<a href="#0" class="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></a>-->
-		<a id="logo-container" href="index.html" class="brand-logo" style="color: white">IIM Logo</a>
-		<div class="cd-search is-hidden">
+		<a id="logo-container" href="index.html" style="margin-right: 10%" ><img src="img/IIM.jpg" style="color: white; margin-top: 0; position: absolute; "></a>
+		<div class="cd-search ">
 			<form action="#0">
 				<input type="search" placeholder="Search..." >
 			</form>
@@ -136,7 +171,7 @@
 		<nav class="cd-nav">
 			<ul class="cd-top-nav">
 				<li><a href="email.html">Mail</a></li>
-				<li><a href="#0">Notification</a></li>
+				<li><a href="Notification.html">Notification</a></li>
 				<li class="has-children account">
 					<a href="#0">
 						<img src="img/cd-avatar.png" alt="avatar">
@@ -152,20 +187,15 @@
 				</li>
 			</ul>
 		</nav>
-    
-    
-       
-    
-        
 	</header> <!-- .cd-main-header -->
 
 <div class="dashboard-container">    
 	<main class="cd-main-content">
 		<nav class="cd-side-nav">
 			<ul>
-						<li class="cd-label">Main</li>
-                	<li class="has-children overview">
-					<a href="employeelist.php">Employee</a>
+				<li class="cd-label">Main</li>
+                	<li class="has-children ">
+					<a href="employeelist.php"><img src="img/employeees.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Employees </a>
 					
 					<ul>
 						<li><a href="employeeadd.html">Add Employee</a></li>
@@ -173,7 +203,7 @@
 					</ul>
 				</li>
 				<li class="has-children overview">
-					<a href="resources.php">Resources</a>
+					<a href="resources.php"><img src="img/resource.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Resources</a>
 					
 					<ul>
 						<li><a href="Projects.html">Add Project</a></li>
@@ -182,54 +212,46 @@
 					</ul>
 				</li>
 			    <li class="has-children overview">
-					<a href="#0">User Management</a>
+					<a href="usermanagement.php"><img src="img/usermgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;User Management</a>
 					
-					<ul>
-						<li><a href="#0">Add New User</a></li>
-				   </ul>
+					
 				</li>
                 <li class="has-children overview">
-					<a href="#0">Groups Management</a>
+					<a href="groupmanagement.php"><img src="img/groupmgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Group View</a>
 					
 					<ul>
-						<li><a href="#0">Create New Group</a></li>
+						<li><a href="addgroup.html">Create New Group</a></li>
 						
 					</ul>
 				</li>
                 <li class="has-children overview">
-					<a href="#0">Apps & Integration</a>
+					<a href="appsintegration.html"><img src="img/appintegrate.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Apps & Integration</a>
 					
 					<ul>
-						<li><a href="#0">Installed Apps</a></li>
+						<li><a href="appinstall.html">Installed Apps</a></li>
 						
 					</ul>
 				</li>
 
 				<li class="has-children overview">
-					<a href="#0">My Contacts</a>
-					
+					<a href="mycontacts.php"><img src="img/mycontacts.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;My Contacts</a>
 					<ul>
-						<li><a href="#0">Supplier</a></li>
-						<li><a href="#0">Vendor</a></li>
-						<li><a href="#0">Partnership</a></li>
-                        <li><a href="#0">B2B</a></li>                        
+						<li><a href="addcontacts.html">Add Contacts</a></li>
+						                   
 					</ul>
 				</li>
 			
             <li class="has-children overview">
-					<a href="#0">Ticketing & Support</a><ul>
+					<a href="mysupportticket.html"><img src="img/ticket.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Ticketing & Support</a><ul>
                 <li></li>
                 </ul>			
 					
 				</li>
             <li class="has-children overview">
-					<a href="#0">Project Deployment</a>
-					
+					<a href="projectdeployment.php"><img src="img/projectview.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Project View</a>
 					<ul>
-						<li><a href="#0">Active Projects</a></li>
-						<li><a href="#0">Project Managers</a></li>
-						<li><a href="#0">Project Health</a></li>
-                        <li><a href="#0">Value</a></li>
+						<li><a href="activeproject.php">Add Active Project</a></li>
+						
 					</ul>
 				</li>
 
@@ -243,102 +265,100 @@
 		</nav>
 
 		<div class="content-wrapper">
-<p style="margin-top: 2%">
-    <select id="type">
-      <option value="success">success</option>
-        <option value="info">info</option>
-        <option value="warning">warning</option>
-        <option value="error">error</option>
-    </select>
-    <label for="title">title:</label>
-    <input type="text" value="title" id="title">
+            
+         <div id="myDIV" class="header" style="height: 150px; color: black">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>    
+            
+<!--    <div id="myDIV" class="header">-->
+<!--  <h2 style="margin:5px">My Installed Application</h2>-->
+<!--  <input type="text" id="myInput" placeholder="Title...">-->
+<!--  <span onclick="newElement()" class="addBtn">Add</span>-->
+<!--</div>-->
 
-    <label for="content">content:</label>
-    <input type="text" id="content" value="content" style="width: 50%">
+<ul id="myUL">
+  <li> Have a Meeting 9:00AM today</span></li>
+  <li>Prepare the video for the contest</li>
+  <li> Place proper images when you submit the project</li>
+  <li>Analyse the risk of the current project</li>
+</ul>
 
-    <button onclick="appendText()">Add Notification</button>
-    
 
-                
-  <div class="messages"> </div>     
-<div> <br id="myBR"> </div>                
-                
-
-<div class=" results alert info">
-  <span class="closebtn">&times;</span>  
-  <strong>Success!</strong> Indicates a successful or positive action.
-</div>
-
-<div class=" results alert info">
-  <span class="closebtn">&times;</span>  
-  <strong>Info!</strong> Indicates a neutral informative change or action.
-</div>
- 
- <div class=" results alert">
-  <span class="closebtn">&times;</span>  
-  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-</div>
-<div class="results alert warning">
-  <span class="closebtn">&times;</span>  
-  <strong>Warning!</strong> Indicates a warning that might need attention.
-</div>
-<div class="results alert success">
-  <span class="closebtn">&times;</span>  
-  <strong>Success!</strong> Indicates a successful or positive action.
-</div>
-
-<div class="results alert info">
-  <span class="closebtn">&times;</span>  
-  <strong>Info!</strong> Indicates a neutral informative change or action.
-</div>
- 
-<div class="results alert warning">
-  <span class="closebtn">&times;</span>  
-  <strong>Warning!</strong> Indicates a warning that might need attention.
-</div>
-<div class="results alert success">
-  <span class="closebtn">&times;</span>  
-  <strong>Success!</strong> Indicates a successful or positive action.
-</div>
-
-<div class="results alert info">
-  <span class="closebtn">&times;</span>  
-  <strong>Info!</strong> Indicates a neutral informative change or action.
-</div>
- 
-
-<div class="results alert warning">
-  <span class="closebtn">&times;</span>  
-  <strong>Warning!</strong> Indicates a warning that might need attention.
-</div>  
-</div>                
 <script>
-var close = document.getElementsByClassName("closebtn");
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
 var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
 
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
 for (i = 0; i < close.length; i++) {
-  close[i].onclick = function(){
+  close[i].onclick = function() {
     var div = this.parentElement;
-    div.style.opacity = "0";
-    setTimeout(function(){ div.style.display = "none"; }, 600);
+    div.style.display = "none";
   }
 }
-</script>
 
-     
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+</script>        
+            
+            
+            
 		</div> <!-- .content-wrapper -->
 	
         
 <footer class="page-footer" >
  
       <div class="row">
-        <div class="col l6 ">
+        <div class="col-sm-6 ">
           <h5 class="white-text">Project IIM</h5>
           <p class="grey-text text-lighten-4">This project is being developed for codegiest hackathon. All tasks, progress and features are aligned to fit within this deadline.</p>
 
 
         </div>
-        <div class="col l3 ">
+        <div class="col-sm-3 ">
           <h5 class="white-text">Settings</h5>
           <ul>
             <li><a class="white-text" href="#!" style="color: black">Home Page</a></li>
@@ -348,11 +368,10 @@ for (i = 0; i < close.length; i++) {
         </div>
        
       </div>
-</footer>   
+</footer>    
 </main> <!-- .cd-main-content -->
 </div>
-    
-
+     
  
       
 <script src="js/jquery-2.1.4.js"></script>

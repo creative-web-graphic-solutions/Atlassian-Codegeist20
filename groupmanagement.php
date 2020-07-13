@@ -294,7 +294,7 @@ $(document).ready(function(){
 <body>
 	<header class="cd-main-header">
 <!--		<a href="#0" class="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></a>-->
-		<a id="logo-container" href="index.html" class="brand-logo" style="color: white">IIM Logo</a>
+		<a id="logo-container" href="index.html" class="brand-logo" style="color: white"><img src="img/IIM.jpg"></a>
 		<div class="cd-search is-hidden">
 			<form action="#0">
 				<input type="search" placeholder="Search..." >
@@ -327,9 +327,9 @@ $(document).ready(function(){
     <main class="cd-main-content"  >
 		<nav class="cd-side-nav">
 			<ul>
-						<li class="cd-label">Main</li>
-                	<li class="has-children overview">
-					<a href="employeelist.php">Employee</a>
+				<li class="cd-label">Main</li>
+                	<li class="has-children ">
+					<a href="employeelist.php"><img src="img/employeees.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Employees </a>
 					
 					<ul>
 						<li><a href="employeeadd.html">Add Employee</a></li>
@@ -337,63 +337,55 @@ $(document).ready(function(){
 					</ul>
 				</li>
 				<li class="has-children overview">
-					<a href="resources.php">Resources</a>
+					<a href="resources.php"><img src="img/resource.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Resources</a>
 					
 					<ul>
 						<li><a href="Projects.html">Add Project</a></li>
-						<li><a href="equipments.html">Add Equipment</a></li>
+						<li><a href="equipments.php">Add Equipment</a></li>
                         
 					</ul>
 				</li>
 			    <li class="has-children overview">
-					<a href="#0">User Management</a>
+					<a href="usermanagement.php"><img src="img/usermgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;User Management</a>
 					
-					<ul>
-						<li><a href="#0">Add New User</a></li>
-				   </ul>
+					
 				</li>
                 <li class="has-children overview">
-					<a href="#0">Groups Management</a>
+					<a href="groupmanagement.php"><img src="img/groupmgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Group View</a>
 					
 					<ul>
-						<li><a href="#0">Create New Group</a></li>
+						<li><a href="addgroup.html">Create New Group</a></li>
 						
 					</ul>
 				</li>
                 <li class="has-children overview">
-					<a href="#0">Apps & Integration</a>
+					<a href="appsintegration.html"><img src="img/appintegrate.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Apps & Integration</a>
 					
 					<ul>
-						<li><a href="#0">Installed Apps</a></li>
+						<li><a href="appinstall.html">Installed Apps</a></li>
 						
 					</ul>
 				</li>
 
 				<li class="has-children overview">
-					<a href="#0">My Contacts</a>
-					
+					<a href="mycontacts.php"><img src="img/mycontacts.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;My Contacts</a>
 					<ul>
-						<li><a href="#0">Supplier</a></li>
-						<li><a href="#0">Vendor</a></li>
-						<li><a href="#0">Partnership</a></li>
-                        <li><a href="#0">B2B</a></li>                        
+						<li><a href="addcontacts.html">Add Contacts</a></li>
+						                   
 					</ul>
 				</li>
 			
             <li class="has-children overview">
-					<a href="#0">Ticketing & Support</a><ul>
+					<a href="mysupportticket.html"><img src="img/ticket.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Ticketing & Support</a><ul>
                 <li></li>
                 </ul>			
 					
 				</li>
             <li class="has-children overview">
-					<a href="#0">Project Deployment</a>
-					
+					<a href="projectdeployment.php"><img src="img/projectview.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Project View</a>
 					<ul>
-						<li><a href="#0">Active Projects</a></li>
-						<li><a href="#0">Project Managers</a></li>
-						<li><a href="#0">Project Health</a></li>
-                        <li><a href="#0">Value</a></li>
+						<li><a href="activeproject.php">Add Active Project</a></li>
+						
 					</ul>
 				</li>
 

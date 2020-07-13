@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Submit Ticket - WebHostWala</title>
+
+    <!-- Styling -->
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600|Raleway:400,700" rel="stylesheet">
+<link href="/templates/default/css/all.min.css?v=924af8" rel="stylesheet">
+<link href="/assets/css/fontawesome-all.min.css" rel="stylesheet">
+<link href="/templates/default/css/custom.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+    var csrfToken = '77d01df625b930d9b50a321b58595343102b92cc',
+        markdownGuide = 'Markdown Guide',
+        locale = 'en',
+        saved = 'saved',
+        saving = 'autosaving',
+        whmcsBaseUrl = "",
+        requiredText = 'Required',
+        recaptchaSiteKey = "";
+</script>
+<script src="/templates/default/js/scripts.min.js?v=924af8"></script>
+
+
+    
+
+</head>
+<body data-phone-cc-input="">
+
+
+
+<section id="main-body">
+    <div class="container">
+        <div class="row">
+
+                                <div class="col-md-3 pull-md-left sidebar">
+                            </div>
+                <!-- Container for main page display content -->
+        <div class="col-md-9 pull-md-right main-content">
+                            <div class="header-lined">
+    <h1>Open Ticket</h1>
+   
+</div>
+            
+
+
+<form method="post" action="/submitticket.php?step=3" enctype="multipart/form-data" role="form">
+<input type="hidden" name="token" value="77d01df625b930d9b50a321b58595343102b92cc" />
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label for="inputName">Name</label>
+            <input type="text" name="name" id="inputName" value="Balamurugan D" class="form-control disabled" disabled="disabled" />
+        </div>
+        <div class="form-group col-sm-5">
+            <label for="inputEmail">Email Address</label>
+            <input type="email" name="email" id="inputEmail" value="dbalamurugan@creativewebgraphic.com" class="form-control disabled" disabled="disabled" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-10">
+            <label for="inputSubject">Subject</label>
+            <input type="text" name="subject" id="inputSubject" value="" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-3">
+            <label for="inputDepartment">Department</label>
+            <select name="deptid" id="inputDepartment" class="form-control" onchange="refreshCustomFields(this)">
+                                    <option value="13" selected="selected">
+                        Technical Support
+                    </option>
+                                    <option value="14">
+                        Billing Support
+                    </option>
+                                    <option value="15">
+                        Sales Team
+                    </option>
+                                    <option value="22">
+                        Trial Request
+                    </option>
+                            </select>
+        </div>
+                    <div class="form-group col-sm-5">
+                <label for="inputRelatedService">Related Service</label>
+                <select name="relatedservice" id="inputRelatedService" class="form-control">
+                    <option value="">None</option>
+                                            <option value="D2021">
+                            Domain - creativewebgraphic.com (Active)
+                        </option>
+                                            <option value="D2065">
+                            Domain - feature.net.in (Cancelled)
+                        </option>
+                                    </select>
+            </div>
+                <div class="form-group col-sm-3">
+            <label for="inputPriority">Priority</label>
+            <select name="urgency" id="inputPriority" class="form-control">
+                <option value="High">
+                    High
+                </option>
+                <option value="Medium" selected="selected">
+                    Medium
+                </option>
+                <option value="Low">
+                    Low
+                </option>
+            </select>
+        </div>
+    </div>
+<!--
+    <div class="form-group">
+        <label for="inputMessage">Message</label>
+        <textarea name="message" id="inputMessage" rows="12" class="form-control markdown-editor" data-auto-save-name="client_ticket_open"></textarea>
+    </div>
+-->
+    <div class="form-group">
+        <label for="inputMessage">Message</label>
+        <div class="md-editor" id="1593913545371"><div class="md-header btn-toolbar"><div class="btn-group"><button class="btn-default btn-sm btn" type="button" title="Bold" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdBold" data-hotkey="Ctrl+B"><span class="glyphicon glyphicon-bold"></span> </button><button class="btn-default btn-sm btn" type="button" title="Italic" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdItalic" data-hotkey="Ctrl+I"><span class="glyphicon glyphicon-italic"></span> </button><button class="btn-default btn-sm btn" type="button" title="Heading" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdHeading" data-hotkey="Ctrl+H"><span class="glyphicon glyphicon-header"></span> </button></div><div class="btn-group"><button class="btn-default btn-sm btn" type="button" title="URL/Link" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdUrl" data-hotkey="Ctrl+L"><span class="glyphicon glyphicon-link"></span> </button><button class="btn-default btn-sm btn hidden" type="button" title="Image" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdImage" data-hotkey="Ctrl+G"><span class="glyphicon glyphicon-picture"></span> </button></div><div class="btn-group"><button class="btn-default btn-sm btn" type="button" title="Unordered List" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdList" data-hotkey="Ctrl+U"><span class="glyphicon glyphicon-list"></span> </button><button class="btn-default btn-sm btn" type="button" title="Ordered List" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdListO" data-hotkey="Ctrl+O"><span class="glyphicon glyphicon-th-list"></span> </button><button class="btn-default btn-sm btn" type="button" title="Code" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdCode" data-hotkey="Ctrl+K"><span class="glyphicon glyphicon-asterisk"></span> </button><button class="btn-default btn-sm btn" type="button" title="Quote" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdQuote" data-hotkey="Ctrl+Q"><span class="glyphicon glyphicon-comment"></span> </button></div><div class="btn-group"><button class="btn-sm btn btn-primary" type="button" title="Preview" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdPreview" data-hotkey="Ctrl+P" data-toggle="button"><span class="glyphicon glyphicon-search"></span> Preview</button></div><div class="md-controls"><a class="md-control md-control-fullscreen" href="https://www.clientarea.co.in/submitticket.php?step=2&amp;deptid=13#"><span class="glyphicon glyphicon-fullscreen"></span></a></div></div><textarea name="message" id="inputMessage" rows="12" class="form-control markdown-editor md-input" data-auto-save-name="client_ticket_open" style="resize: vertical;"></textarea><div class="md-footer"><div id="inputMessage-footer" class="markdown-editor-status"><div class="small-font">lines: 0&nbsp;&nbsp;&nbsp;words: 0&nbsp;&nbsp;&nbsp;<span class="markdown-save">saved</span></div></div></div><div class="md-fullscreen-controls"><a href="https://www.clientarea.co.in/submitticket.php?step=2&amp;deptid=13#" class="exit-fullscreen" title="Exit fullscreen"><span class="glyphicon glyphicon-fullscreen"></span></a></div></div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-12">
+            <label for="inputAttachments">Attachments</label>
+        </div>
+        <div class="col-sm-9">
+            <input type="file" name="attachments[]" id="inputAttachments" class="form-control" />
+            <div id="fileUploadsContainer"></div>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-default btn-block" onclick="extraTicketAttachment()">
+                <i class="fas fa-plus"></i> Add More
+            </button>
+        </div>
+        <div class="col-xs-12 ticket-attachments-message text-muted">
+            Allowed File Extensions: .jpg, .gif, .jpeg, .png, .pdf
+        </div>
+    </div>
+
+    <div id="customFieldsContainer">
+            </div>
+
+    <div id="autoAnswerSuggestions" class="well hidden"></div>
+
+    <div class="text-center margin-bottom">
+            </div>
+
+    <p class="text-center">
+        <input type="submit" id="openTicketSubmit" value="Submit" class="btn btn-primary" />
+        <a href="supporttickets.php" class="btn btn-default">Cancel</a>
+    </p>
+
+</form>
+
+    <script>
+        jQuery(document).ready(function() {
+            getTicketSuggestions();
+        });
+    </script>
+
+
+
+                </div><!-- /.main-content -->
+                                
+                            <div class="clearfix"></div>
+      
+</section>
+
+
+
+<div class="modal system-modal fade" id="modalAjax" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content panel panel-primary">
+            <div class="modal-header panel-heading">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Title</h4>
+            </div>
+            <div class="modal-body panel-body">
+                Loading...
+            </div>
+            <div class="modal-footer panel-footer">
+                <div class="pull-left loader">
+                    <i class="fas fa-circle-notch fa-spin"></i> Loading...
+                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary modal-submit">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

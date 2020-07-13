@@ -294,7 +294,7 @@ $(document).ready(function(){
 <body>
 	<header class="cd-main-header">
 <!--		<a href="#0" class="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></a>-->
-		<a id="logo-container" href="index.html" class="brand-logo" style="color: white">IIM Logo</a>
+		<a id="logo-container" href="index.html" class="brand-logo" style="color: white"><img src="img/IIM.jpg"></a>
 		<div class="cd-search is-hidden">
 			<form action="#0">
 				<input type="search" placeholder="Search..." >
@@ -327,9 +327,9 @@ $(document).ready(function(){
     <main class="cd-main-content"  >
 		<nav class="cd-side-nav">
 			<ul>
-						<li class="cd-label">Main</li>
-                	<li class="has-children overview">
-					<a href="employeelist.php">Employee</a>
+				<li class="cd-label">Main</li>
+                	<li class="has-children ">
+					<a href="employeelist.php"><img src="img/employeees.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Employees </a>
 					
 					<ul>
 						<li><a href="employeeadd.html">Add Employee</a></li>
@@ -337,23 +337,21 @@ $(document).ready(function(){
 					</ul>
 				</li>
 				<li class="has-children overview">
-					<a href="resources.php">Resources</a>
+					<a href="resources.php"><img src="img/resource.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Resources</a>
 					
 					<ul>
 						<li><a href="Projects.html">Add Project</a></li>
-						<li><a href="equipments.html">Add Equipment</a></li>
+						<li><a href="equipments.php">Add Equipment</a></li>
                         
 					</ul>
 				</li>
 			    <li class="has-children overview">
-					<a href="usermanagement.php">User Management</a>
+					<a href="usermanagement.php"><img src="img/usermgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;User Management</a>
 					
-					<ul>
-						<li><a href="">Add New User</a></li>
-				   </ul>
+					
 				</li>
                 <li class="has-children overview">
-					<a href="groupmanagement.php">Groups Management</a>
+					<a href="groupmanagement.php"><img src="img/groupmgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Group View</a>
 					
 					<ul>
 						<li><a href="addgroup.html">Create New Group</a></li>
@@ -361,17 +359,16 @@ $(document).ready(function(){
 					</ul>
 				</li>
                 <li class="has-children overview">
-					<a href="#0">Apps & Integration</a>
+					<a href="appsintegration.html"><img src="img/appintegrate.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Apps & Integration</a>
 					
 					<ul>
-						<li><a href="#0">Installed Apps</a></li>
+						<li><a href="appinstall.html">Installed Apps</a></li>
 						
 					</ul>
 				</li>
 
 				<li class="has-children overview">
-					<a href="mycontacts.php">My Contacts</a>
-					
+					<a href="mycontacts.php"><img src="img/mycontacts.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;My Contacts</a>
 					<ul>
 						<li><a href="addcontacts.html">Add Contacts</a></li>
 						                   
@@ -379,14 +376,13 @@ $(document).ready(function(){
 				</li>
 			
             <li class="has-children overview">
-					<a href="#0">Ticketing & Support</a><ul>
+					<a href="mysupportticket.html"><img src="img/ticket.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Ticketing & Support</a><ul>
                 <li></li>
                 </ul>			
 					
 				</li>
             <li class="has-children overview">
-					<a href="projectdeployment.php">Project Deployment</a>
-					
+					<a href="projectdeployment.php"><img src="img/projectview.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Project View</a>
 					<ul>
 						<li><a href="activeproject.php">Add Active Project</a></li>
 						
@@ -439,6 +435,8 @@ $(document).ready(function(){
 						<tr>
 							<th>Employee Name</th>
 							<th>Employee ID</th>
+                            <th>Job Location</th>
+                            <th>Date of Join</th>
 							<th>Designation</th>
 							<th>Phone</th>
 							<th>Actions</th>
@@ -449,6 +447,8 @@ $(document).ready(function(){
                     <tr>
                         <td><?php echo $row['employeename']; ?></td>
                         <td><?php echo $row['employeeno']; ?></td>
+                        <td><?php echo $row['joblocation']; ?></td>
+                        <td><?php echo $row['dateofjoin']; ?></td>
                         <td><?php echo $row['designation']; ?></td>
                         <td><?php echo $row['contactnumber']; ?></td>
                         <td>
@@ -468,7 +468,8 @@ $(document).ready(function(){
 			<div class="modal-content">
                   <?php
                         $mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
-                        $result = $mysqli->query("SELECT * FROM employees") or die($mysqli->error);
+                        $result = $mysqli->query("SELECT * FROM employees where id ='$id'") or die($mysqli->error);
+                         $row = $result->fetch_assoc();
                 ?>
 				<form action="employeeprocess.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -479,11 +480,11 @@ $(document).ready(function(){
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Employee Number</label>
-							<input type="text" class="form-control" value="<?php $employeenum ?>" name="employeenum" required>
+							<input type="text" class="form-control" value="<?php $row['employeeno']; ?>" name="employeenum" required>
 						</div>
                         <div class="form-group">
 							<label>Employee Name</label>
-							<input type="text" class="form-control" name="employeename" value="<?php $employeename ?>" required>
+							<input type="text" class="form-control" name="employeename" value="<?php $row['employeename'] ?>" required>
 						</div>
                         <div class="form-group">
 							<label>Job Location</label>
@@ -505,10 +506,12 @@ $(document).ready(function(){
 							<label>Status</label>
 							<input type="text" class="form-control" name="status" value="<?php $status ?>" required>
 						</div>
+<!--
 						<div class="form-group">
 							<label>Photo</label>
 							<input type="file" class="form-control" name="myfile" required>
 						</div>					
+-->
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

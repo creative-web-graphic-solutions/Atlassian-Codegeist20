@@ -59,13 +59,10 @@ if (isset($_POST['update'])){
     $contactnumber = $_POST['contactnumber'];
     $designation = $_POST['designation'];
     $status = $_POST['status'];
-    $mysqli->query("UPDATE employees SET employeeno='$employeenum' , employeename='$employeename', joblocation='$joblocation', dateofjoin='$dateofjoin', contactnumber='$contactnumber', designation='$designation', status='$status' WHERE id=$id") or
+    $result = $mysqli->query("UPDATE employees SET employeeno='$employeeno' , employeename='$employeename', joblocation='$joblocation', dateofjoin='$dateofjoin', contactnumber='$contactnumber', designation='$designation', status='$status' WHERE employeeno='$employeeno'") or
             die($mysqli->error);
-    
-    $_SESSION['message'] = "Record has been updated!";
-    $_SESSION['msg_type'] = "warning";
-    
-    header('location: employeelist.php');
+       
+    header('location: success.html');
 }
 
             

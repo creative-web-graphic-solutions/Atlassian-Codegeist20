@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <title>IT Infrastructure Management - CIO's Desk</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/dashboardstyle.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <style>
+     *{margin: 0px; padding: 0px; font-size: 15px; list-style: none}
+        html, body{ background-color: #16F5E8; width: 100%; height:100%; position: relative;}
+        .header{ height:20%; background:blue; position: relative;}
+        .page-footer{
+        position: fixed;
+  margin-left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: blue;
+  color: white;
+/*  text-align: center;*/
+/*  padding-left: 14%;            */
+    }    
+        
+/*        .footer{ height:35%; background:blue;bottom:0; position: absolute; width: 100%}*/
+        
+*/ 
+    </style>    
+    
+<style>
+.title-text {
+  position: relative;
+  display: inline-block;
+/*  border-bottom: 1px dotted black;*/
+}
+
+.title-text .title-description {
+  visibility: hidden;
+  width: 300px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.title-text .title-description::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.title-text:hover .title-description {
+  visibility: visible;
+  opacity: 1;
+}
+</style>    
+     	
+	
+</head>
+<body>
+	<header class="cd-main-header">
+<!--		<a href="#0" class="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></a>-->
+		<a id="logo-container" href="index.html" class="brand-logo" style="color: white"><img src="img/IIM.jpg" style="width: 70px; margin-left: 50px" alt="Logo"></a>
+		<div class="cd-search is-hidden">
+			<form action="#0">
+				<input type="search" placeholder="Search..." >
+			</form>
+		</div> <!-- cd-search -->
+
+		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+		<nav class="cd-nav">
+			<ul class="cd-top-nav">
+				<li><a href="email.html">Mail</a></li>
+				<li><a href="Notification.html">Notification</a></li>
+				<li class="has-children account">
+					<a href="#0">
+						<img src="img/cd-avatar.png" alt="avatar">
+						My Profile
+					</a>
+
+					<ul>
+
+						<li><a href="#0">Edit Account</a></li>
+						<li><a href="#0">Settings</a></li>
+						<li><a href="#0">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header> <!-- .cd-main-header -->
+
+<div class="dashboard">    
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">Main</li>
+                	<li class="has-children ">
+					<a href="employeelist.php"><img src="img/employeees.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Employees </a>
+					
+					<ul>
+						<li><a href="employeeadd.html">Add Employee</a></li>
+						
+					</ul>
+				</li>
+				<li class="has-children overview">
+					<a href="resources.php"><img src="img/resource.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Resources</a>
+					
+					<ul>
+						<li><a href="Projects.html">Add Project</a></li>
+						<li><a href="equipments.php">Add Equipment</a></li>
+                        
+					</ul>
+				</li>
+			    <li class="has-children overview">
+					<a href="usermanagement.php"><img src="img/usermgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;User Management</a>
+					
+					
+				</li>
+                <li class="has-children overview">
+					<a href="groupmanagement.php"><img src="img/groupmgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Group View</a>
+					
+					<ul>
+						<li><a href="addgroup.html">Create New Group</a></li>
+						
+					</ul>
+				</li>
+                <li class="has-children overview">
+					<a href="appsintegration.html"><img src="img/appintegrate.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Apps & Integration</a>
+					
+					<ul>
+						<li><a href="appinstall.html">Installed Apps</a></li>
+						
+					</ul>
+				</li>
+
+				<li class="has-children overview">
+					<a href="mycontacts.php"><img src="img/mycontacts.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;My Contacts</a>
+					<ul>
+						<li><a href="addcontacts.html">Add Contacts</a></li>
+						                   
+					</ul>
+				</li>
+			
+            <li class="has-children overview">
+					<a href="mysupportticket.html"><img src="img/ticket.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Ticketing & Support</a><ul>
+                <li></li>
+                </ul>			
+					
+				</li>
+            <li class="has-children overview">
+					<a href="projectdeployment.php"><img src="img/projectview.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Project View</a>
+					<ul>
+						<li><a href="activeproject.php">Add Active Project</a></li>
+						
+					</ul>
+				</li>
+
+			
+<!--
+			<ul>
+				<li class="cd-label">Action</li>
+				<li class="action-btn"><a href="#0">+ Button</a></li>
+			</ul>
+-->
+		</nav>
+
+		<div class="content-wrapper container">
+            
+         			
+        <div class="row">
+        
+            <h3 style="text-align: center">Featured Apps &amp; Integrations</h3> </br> </br>
+                        
+                <div class="col-sm-3">
+                     <div class="microsoft" style="background-color: white; width: 150px; padding: 15px" >
+                               <a class="title" href="https://www.atlassiancodegeist.com/apps/MICROSOFT%20OUTLOOK/" data-name="MICROSOFT OUTLOOK" data-category="EMAIL_PLATFORM" data-app="True">
+                                        <div class="title-img" style="width: 60px; height: 60px"  >
+                                            <img alt="App logo" src="img/outlook.svg">
+                                        </div>
+                                      <div class="title-text" style="text-align: center">
+                                          <p>Microsoft Outlook 
+                                            Email Platform</p>
+                                        <span class="title-description">
+                                            Microsoft Outlook is a personal information manager from Microsoft, available as a part of the Microsoft Office suite. Primarily an email application, it also includes a calendar, task manager, contact manager, note taking, journal, and web browsing.
+                                        </span>
+                                   </div>
+                                    
+                                   </div> </br>
+                        <div class="visme"  style="background-color: white; width: 150px; padding: 15px">
+                               <a class="title" href="https://www.atlassiancodegeist.com/apps/VISME/" data-name="VISME" data-category="DESIGN_CREATIVITY" data-app="True">
+                                        <div class="title-img" style="width: 60px; height: 60px"  >
+                                            <img alt="App logo" src="img/visme-icon.svg">
+                                        </div>
+                                        <div class="title-text" style="text-align: center">
+                                            <p>Visme
+                                             Design and Creativity</p>
+                                        <span class="title-description">
+                                            Make professional presentations and infographics online with Visme's free tool.
+                                        </span>
+                                   </div>                                    
+                        </div>        </br>
+                        
+                         <div class="leadpages" style="background-color: white; width: 150px; padding: 15px">
+                            <a class="title" href="https://www.atlassiancodegeist.com/apps/LEADPAGES/" data-name="LEADPAGES" data-category="CONTENT_CREATION_PUBLISHING" data-app="True">
+                                        <div class="title-img" style="width: 60px; height: 60px" >
+                                            <img alt="App logo" src="img/leadpages-icon.svg">
+                                        </div>
+                                        <div class="title-text" style="text-align: center">
+                                            <p>Leadpages
+                                            Content Creation and Publishing</p>                                        
+                                        <span class="title-description">
+                                            Leadpages helps small businesses connect with an audience, collect leads, and close sales. Easily build websites, landing pages, pop-ups, alert bars, and beyond.
+                                        </span>
+                                    </div>
+                                </div>
+                    </div> 
+                                  
+                        <div class="col-sm-3">
+                            <div class="liveweb" style="background-color: white; width: 150px; padding: 15px">
+                                    <a class="tile" href="https://www.atlassiancodegeist.com/apps/LIVEWEB/" data-name="LIVEWEB" data-category="CRM_SALES" data-app="True">
+                                        <div class="title-img" style="width: 60px; height: 60px" >
+                                            <img alt="App logo" src="img/liveweb-icon.svg">
+                                        </div>
+                                        <div class="title-text">
+                                            <p>Liveweb
+                                            CRM and Sales</p>
+                                        
+                                        <span class="title-description">
+                                            Manage inbound communications with a single tool.
+                                        </span>
+                                    </div>
+                                        </div> </br>
+                                <div class="Jira" style="background-color: white; width: 150px; padding: 15px">
+                                 <a class="title" href="integratejira.html" data-name="JIRA" data-category="TASK_MANAGEMENT" data-app="True" data-featured="False">
+                                <div class="title-img">
+                                    <img alt="App logo" src="img/jira-icon.svg" style="width: 60px; height: 60px" >
+                                </div>
+                                <div class="title-text">
+                                    <p>Jira
+                                    Project and Task Management</p>
+                                
+                                <span class="title-description">
+                                    JIRA is an application development tool for teams planning and building products. JIRA is trusted by teams around the world to report and organize issues, assign work, follow team activity, and manage projects from start to finish. It’s cloud-based system allows technical teams to coordinate efforts and get the job done.
+                                    </div> 
+                                     </div>     </br>
+                                <div class="todolist" style="background-color: white; width: 150px; padding: 15px">
+                               <a class="tile" href="https://www.atlassiancodegeist.com/apps/TODOIST/" data-name="TODOIST" data-category="TASK_MANAGEMENT" data-app="True">
+                                        <div class="title-img" style="width: 60px; height: 60px" >
+                                            <img alt="App logo" src="img/todoist-icon-copy.svg">
+                                        </div>
+                                        <div class="title-text">
+                                            <p>Todoist
+                                            Project and Task Management</p>
+                                        
+                                        <span class="title-description">
+                                            15+ million people trust Todoist to tame life's chaos. Ranked by The Verge as the world's best to do list app. Free on iOS, Android, macOS, Windows, &amp; more.
+                                        </span>
+                                    </div>
+                            </div>    
+                            </div>
+                        <div class="col-sm-3">
+                            <div class="googleclass" style="background-color: white; width: 150px; padding: 15px">
+                               <a class="title" href="https://www.atlassiancodegeist.com/apps/GOOGLE%20CLASSROOM/" data-name="GOOGLE CLASSROOM" data-category="GOOGLE" data-app="True">
+                                        <div class="tile-img" style="width: 60px; height: 60px" >
+                                            <img alt="App logo" src="img/googleclassroom-icon-copy.svg">
+                                        </div>
+                                        <div class="title-text">
+                                            <p>Google Classroom
+                                            Google</p>
+                                        
+                                        <span class="title-description">
+                                            Classroom is a free service for schools, non-profits, and anyone with a personal Google account.
+                                        </span>
+                                    </div>   
+                                
+                            </div> </br>
+                            <div class="typeform" style="background-color: white; width: 150px; padding: 15px">
+                                <a class="title" href="https://www.atlassiancodegeist.com/apps/TYPEFORM/" data-name="TYPEFORM" data-category="CUSTOMER_SUPPORT" data-app="True">
+                                        <div class="tile-img" style="width: 60px; height: 60px">
+                                            <img alt="App logo" src="img/typeform-icon-copy.svg">
+                                        </div>
+                                        <div class="title-text">
+                                            <p>Typeform
+                                            Customer Support</p>
+                                        
+                                        <div class="title-description">
+                                            Build conversational forms, surveys, quizzes, landing pages, and more. Typeforms are easy to make and refreshing to take. Try it FREE – no coding required.
+                                        </div>
+                                    </div>
+                                    </div> </br>
+                            <div class="flock" style="background-color: white; width: 150px; padding: 15px">
+                            <a class="title" href="https://www.atlassiancodegeist.com/apps/FLOCK/" data-name="FLOCK" data-category="COMMUNICATION_MESSAGING" data-app="True">
+                                        <div class="title-img" style="width: 60px; height: 60px">
+                                            <img alt="App logo" src="img/flock-icon-copy.svg">
+                                        </div>
+                                        <div class="title-text">
+                                            <p>Flock
+                                            Communication and Messaging</p>
+                                        
+                                        <span class="title-description">
+                                            Flock, the best team communication app and online collaboration platform, comes with team messaging, project management and other great features.
+                                        </span>
+                                    </div>
+                            </div>
+                                    </div>
+                            
+                        <div class="col-sm-3">
+                            <div class="woven" style="background-color: white; width: 150px; padding: 15px">
+                              <a class="tile" href="https://www.atlassiancodegeist.com/apps/WOVEN/" data-name="WOVEN" data-category="TASK_MANAGEMENT" data-app="True">
+                                        <div class="title-img" style="width: 60px; height: 60px">
+                                            <img alt="App logo" src="img/woven.svg">
+                                        </div>
+                                        <div class="title-text">
+                                            <p>Woven
+                                            Project and Task Management</p>
+                                    
+                                        <span class="title-description">
+                                            The all-in-one calendar. Powerful scheduling tools built into a smart and collaborative calendar.
+                                        </span>
+                                    </div>
+                                  </div>
+                              </br>
+                            <div class="leadpages" style="background-color: white; width: 150px; padding: 15px">
+                                 <a class="title" href="https://www.atlassiancodegeist.com/apps/LEADPAGES/" data-name="LEADPAGES" data-category="CONTENT_CREATION_PUBLISHING" data-app="True">
+                                        <div class="tile-img" style="width: 60px; height: 60px">
+                                            <img alt="App logo" src="img/leadpages-icon.svg">
+                                        </div>
+                                        <div class="title-text">
+                                            <p>Leadpages
+                                            Content Creation and Publishing</p>
+                                    
+                                        <span class="title-description">
+                                            Leadpages helps small businesses connect with an audience, collect leads, and close sales. Easily build websites, landing pages, pop-ups, alert bars, and beyond.
+                                        </span>
+                                    </div>
+                                     </div>        </br>
+                            <div class="clickup" style="background-color: white; width: 150px; padding: 15px">
+                      <a class="title" href="https://www.atlassiancodegeist.com/apps/CLICKUP/" data-name="CLICKUP" data-category="TASK_MANAGEMENT" data-app="True">
+                                        <div class="title-img" style="width: 60px; height: 60px">
+                                            <img alt="App logo" src="img/clickup-icon.svg">
+                                        </div>
+                                        <div class="title-text">
+                                            <p>ClickUp
+                                            Project and Task Management</p>
+                                        
+                                        <span class="title-description">
+                                            ClickUp is a productivity platform that provides a fundamentally new way to work. More than just task management - ClickUp offers notes, reminders, goals, calendar, scheduling, and even an inbox.
+                                        </span>
+                                    </div>      
+                          </div> </br> </br> </br> </br> </br> </br>
+<!--        
+                                   <a class="tile" href="https://www.atlassiancodegeist.com/apps/MESSENGER/" data-name="MESSENGER" data-category="COMMUNICATION_MESSAGING" data-app="True">
+                                        <div class="tile-img">
+                                            <img alt="App logo" src="img/messenger-icon.svg">
+                                        </div>
+                                        <div class="tile-text">
+                                            <h4>Messenger</h4>
+                                            <p>Communication and Messaging</p>
+                                        </div>
+                                        <div class="tile-description">
+                                            Stay connected to friends and family with Facebook Messenger, the instant messaging platform that is absolutely free to use, on any device, from anywhere. Created and owned by Facebook, Messenger is one of the most widely used instant messaging apps today.
+                                        </div>
+                                    </a>
+-->
+                           
+                            </div>                  
+                    
+            
+        </div>        
+                        
+            
+		</div> <!-- .content-wrapper -->
+	
+        
+<footer class="page-footer" >
+ 
+      <div class="row">
+        <div class="col-sm-6 ">
+          <h5 style="color:white">Project IIM</h5>
+          <p style="color:white">This project is being developed for codegiest hackathon. All tasks, progress and features are aligned to fit within this deadline.</p>
+
+
+        </div>
+        <div class="col-sm-3 ">
+          <h5 style="color:white">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!" style="color: black">Home Page</a></li>
+            <li><p style="color:white"> IIM Team</p></li>
+            
+          </ul>
+        </div>
+       
+      </div>
+</footer>    
+</main> <!-- .cd-main-content -->
+</div>
+     
+ 
+      
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/jquery.menu-aim.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>

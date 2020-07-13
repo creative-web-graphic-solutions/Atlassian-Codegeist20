@@ -125,7 +125,7 @@
 <body>
 	<header class="cd-main-header">
 <!--		<a href="#0" class="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></a>-->
-		<a id="logo-container" href="index.html" class="brand-logo" style="color: white">IIM Logo</a>
+		<a id="logo-container" href="index.html" class="brand-logo" style="color: white"><img src="img/IIM.jpg"></a>
 		<div class="cd-search is-hidden">
 			<form action="#0">
 				<input type="search" placeholder="Search..." >
@@ -159,9 +159,9 @@
 	<main class="cd-main-content">
 		<nav class="cd-side-nav">
 			<ul>
-						<li class="cd-label">Main</li>
-                	<li class="has-children overview">
-					<a href="employeelist.php">Employee</a>
+				<li class="cd-label">Main</li>
+                	<li class="has-children ">
+					<a href="employeelist.php"><img src="img/employeees.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Employees </a>
 					
 					<ul>
 						<li><a href="employeeadd.html">Add Employee</a></li>
@@ -169,63 +169,55 @@
 					</ul>
 				</li>
 				<li class="has-children overview">
-					<a href="resources.php">Resources</a>
+					<a href="resources.php"><img src="img/resource.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Resources</a>
 					
 					<ul>
 						<li><a href="Projects.html">Add Project</a></li>
-						<li><a href="equipments.html">Add Equipment</a></li>
+						<li><a href="equipments.php">Add Equipment</a></li>
                         
 					</ul>
 				</li>
 			    <li class="has-children overview">
-					<a href="#0">User Management</a>
+					<a href="usermanagement.php"><img src="img/usermgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;User Management</a>
 					
-					<ul>
-						<li><a href="#0">Add New User</a></li>
-				   </ul>
+					
 				</li>
                 <li class="has-children overview">
-					<a href="#0">Groups Management</a>
+					<a href="groupmanagement.php"><img src="img/groupmgt.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Group View</a>
 					
 					<ul>
-						<li><a href="#0">Create New Group</a></li>
+						<li><a href="addgroup.html">Create New Group</a></li>
 						
 					</ul>
 				</li>
                 <li class="has-children overview">
-					<a href="#0">Apps & Integration</a>
+					<a href="appsintegration.html"><img src="img/appintegrate.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Apps & Integration</a>
 					
 					<ul>
-						<li><a href="#0">Installed Apps</a></li>
+						<li><a href="appinstall.html">Installed Apps</a></li>
 						
 					</ul>
 				</li>
 
 				<li class="has-children overview">
-					<a href="#0">My Contacts</a>
-					
+					<a href="mycontacts.php"><img src="img/mycontacts.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;My Contacts</a>
 					<ul>
-						<li><a href="#0">Supplier</a></li>
-						<li><a href="#0">Vendor</a></li>
-						<li><a href="#0">Partnership</a></li>
-                        <li><a href="#0">B2B</a></li>                        
+						<li><a href="addcontacts.html">Add Contacts</a></li>
+						                   
 					</ul>
 				</li>
 			
             <li class="has-children overview">
-					<a href="#0">Ticketing & Support</a><ul>
+					<a href="mysupportticket.html"><img src="img/ticket.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Ticketing & Support</a><ul>
                 <li></li>
                 </ul>			
 					
 				</li>
             <li class="has-children overview">
-					<a href="#0">Project Deployment</a>
-					
+					<a href="projectdeployment.php"><img src="img/projectview.jpg" style="width: 35px; border-radius: 50%;">&nbsp;&nbsp;Project View</a>
 					<ul>
-						<li><a href="#0">Active Projects</a></li>
-						<li><a href="#0">Project Managers</a></li>
-						<li><a href="#0">Project Health</a></li>
-                        <li><a href="#0">Value</a></li>
+						<li><a href="activeproject.php">Add Active Project</a></li>
+						
 					</ul>
 				</li>
 
@@ -327,7 +319,8 @@
                         <?php 
                             $percitemproduce = (1 - ($row[itemproduced] / $row[task])) *100;
                             $complete = (100 - $percitemproduce);
-                            $remaintask = (100 - $complete);
+                            $remaintask = (100 - $complete);                                                        
+                                                    
                         ?>
                         <td><meter id="complete" value="<?php echo $complete; ?>" min="0" max="100"></meter><?php echo number_format($complete,2); ?>%</td>
                         <td><?php echo $row['projectassign']; ?></td>
@@ -335,28 +328,31 @@
                              
                          $workpercentage = (($row['itemproduced']/ $row['task']) *100);
                          $risk = (100 - $workpercentage);
+                         if ($risk < "50" )
                         ?>
-                        <td><span id="bulletsignalyellow" style=" font-size:40px">&#8226;</span><?php echo number_format($risk,2); ?>%</td>
+                        <td><span id="bulletsignalgreen" style=" font-size:40px; text-align:center">&#8226;</span><?php echo number_format($risk,2); ?>%</td>
+                        
                         <?php 
                          
                          $noofworking= (($row['mon'] + $row['tue'] + $row['wed'] + $row['thu'] + $row['fri'] + $row['sat'] + $row['sun']) /7);
                          $noofneeded = ($row['schedule'] - $noofworking);
-                                              
+                                            
                         ?>
-                        <td><span id="bulletsignalgreen" style=" font-size:40px">&#8226;</span><?php echo number_format($noofneeded,2); ?></td>
+                        <td><span id="bulletsignalreds" style=" font-size:40px;text-align:center">&#8226;</span><?php echo number_format($noofneeded,2); ?></td>
                         <?php $atualcost= $row['costofproject'];
                               $plannedvalue = 0;
                               $earnedvalue= ($complete * $row['costofproject'])/100; 
                               if ($earnedvalue > $row['costofproject'])
                                   
                         ?>
-                        <td><span id="bulletsignalreds" style=" font-size:40px">&#8226;</span><?php echo  number_format($earnedvalue,2); ?></td>
+                        <td><span id="bulletsignalgreen" style=" font-size:40px;text-align:center">&#8226;</span><?php echo  number_format($earnedvalue,2); ?></td>
                         <?php 
                         $defectsfound = $row['defectsfound'];
                         $sampletested = $row['sampletested'];
                         ($DPMO = ($defectsfound / ($sampletested * $defectsfound) * 1000000)); 
+                        if ($DPMO < "10000")
                         ?>                        
-                        <td> <span id="bulletsignalyellow" style="font-size:40px">&#8226;</span><?php echo number_format($DPMO,2); ?></td>
+                        <td> <span id="bulletsignalyellow" style="font-size:40px;text-align:center">&#8226;</span><?php echo number_format($DPMO,2); ?></td>
                                            
                     </tr>
                 <?php endwhile; ?>    

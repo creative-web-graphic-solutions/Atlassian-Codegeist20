@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="46px" viewBox="0 0 62 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>gmail</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="62" height="62"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#E2E2E2" offset="0%"></stop>
+            <stop stop-color="#E2E2E2" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#D55043" offset="0%"></stop>
+            <stop stop-color="#D4473A" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#BF3B2C" offset="0%"></stop>
+            <stop stop-color="#C23A2A" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="65.203226%" y1="74.2187605%" x2="0%" y2="30.7414734%" id="linearGradient-6">
+            <stop stop-color="#000000" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.813943614" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-29.0%" y="-40.5%" width="158.1%" height="181.1%" filterUnits="objectBoundingBox" id="filter-7">
+            <feGaussianBlur stdDeviation="3.20689655" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="gmail" transform="translate(0.000000, -7.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Rectangle-12"></g>
+            <g id="Group" mask="url(#mask-2)">
+                <g transform="translate(0.000000, 7.153846)">
+                    <rect id="Rectangle-6" fill="#F2F2F2" x="0" y="0" width="62" height="45.3076923" rx="7.15384615"></rect>
+                    <polygon id="Path-6" fill="url(#linearGradient-3)" points="31 28.047619 7.48275862 45.3076923 5.34482759 45.3076923 5.34482759 7.55128205 31 24.8113553"></polygon>
+                    <path d="M7.15384615,4.76923077 L4.26848862,0 C1.910594,0 0,1.93581699 0,4.32376827 L0,40.5384615 C-3.18658882e-15,43.172435 2.13525735,45.3076923 4.76923077,45.3076923 L7.15384615,45.3076923 L7.15384615,4.76923077 Z" id="Combined-Shape" fill="url(#linearGradient-4)"></path>
+                    <path d="M62,4.76923077 L54.8461538,4.76923077 L54.8461538,40.5472115 C54.8461538,43.1811849 56.9814112,45.3164423 59.6153846,45.3164423 L62,45.3164423 L62,4.76923077 Z" id="Combined-Shape" fill="url(#linearGradient-5)" transform="translate(58.423077, 25.042837) scale(-1, 1) translate(-58.423077, -25.042837) "></path>
+                    <path d="M0,7.15384615 L39.5517241,45.3076923 L57.7241379,45.3076923 C60.0856313,45.3076923 62,43.3933237 62,41.0318302 L62,4.31501832 L31,22.6538462 L3.20689655,2.15750916 L0,7.15384615 Z" id="Path-7" fill="url(#linearGradient-6)" opacity="0.413439764"></path>
+                    <polygon id="Path-8" fill-opacity="0.300000012" fill="#000000" filter="url(#filter-7)" points="29.9310345 25.8901099 33.137931 29.1263736 63.0689655 7.55128205 62 5.39377289 60.9310345 5.39377289"></polygon>
+                    <path d="M0,7.15384615 L0,4.77082447 C-7.22755973e-06,2.13688658 2.13519166,0.00164237693 4.76912954,0.0015864715 C5.91633615,0.00156212199 6.71124169,0.00103329816 7.15384615,0 L31,16.6923077 L54.8461538,0 C55.6410256,0 56.4358974,0 57.2307692,0 C59.8647427,-4.83853068e-16 62,2.13525735 62,4.76923077 L62,7.15384615 L31,28.6153846 L0,7.15384615 Z" id="Combined-Shape" fill="#DC4A3E"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

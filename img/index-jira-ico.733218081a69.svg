@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>7E755F80-F245-47B8-873F-E92E31B43746</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="91.8666124%" y1="40.3276956%" x2="28.2635218%" y2="81.6596195%" id="linearGradient-1">
+            <stop stop-color="#0052CC" offset="18%"></stop>
+            <stop stop-color="#2684FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="8.70980871%" y1="59.1664468%" x2="72.2425722%" y2="17.9899763%" id="linearGradient-2">
+            <stop stop-color="#0052CC" offset="18%"></stop>
+            <stop stop-color="#2684FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-324.000000, -4506.000000)" fill-rule="nonzero" id="3rd-Section">
+            <g transform="translate(-15.000000, 3515.000000)">
+                <g id="Group-42" transform="translate(0.000000, 737.000000)">
+                    <g id="jira-ico-big" transform="translate(340.000000, 255.000000)">
+                        <circle id="Oval-3-Copy-2" stroke="#DFE4EB" fill="#FFFFFF" cx="35" cy="35" r="35"></circle>
+                        <g id="Jira-Software-blue" transform="translate(21.000000, 21.000000)">
+                            <path d="M27.3945946,13.6452632 L15.0594595,1.20578947 L13.8637838,0 L4.57837838,9.36394737 L0.332972973,13.6452632 C-0.109659167,14.0921952 -0.109659167,14.8162258 0.332972973,15.2631579 L8.81621622,23.8181579 L13.8637838,28.9084211 L23.1491892,19.5444737 L23.292973,19.3994737 L27.3945946,15.2631579 C27.8372267,14.8162258 27.8372267,14.0921952 27.3945946,13.6452632 Z M13.8637838,18.7278947 L9.62594595,14.4542105 L13.8637838,10.1805263 L18.1016216,14.4542105 L13.8637838,18.7278947 Z" id="Shape" fill="#2684FF"></path>
+                            <path d="M13.8637838,10.1805263 C11.0891647,7.3821072 11.0756422,2.84954735 13.8335135,0.0343421053 L4.55945946,9.38302632 L9.60702703,14.4732895 L13.8637838,10.1805263 Z" id="Shape" fill="url(#linearGradient-1)"></path>
+                            <path d="M18.112973,14.4427632 L13.8637838,18.7278947 C15.2030022,20.0776379 15.9554343,21.9087647 15.9554343,23.8181579 C15.9554343,25.7275511 15.2030022,27.5586778 13.8637838,28.9084211 L23.1605405,19.5330263 L18.112973,14.4427632 Z" id="Shape" fill="url(#linearGradient-2)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

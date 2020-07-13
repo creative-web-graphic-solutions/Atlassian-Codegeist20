@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>adroll</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="adroll" fill-rule="nonzero">
+            <rect id="Rectangle-17-Copy-5" fill="#FFFFFF" x="0" y="0" width="46" height="46" rx="4"></rect>
+            <path d="M10,35 L10,31.5152225 C10.3140714,28.8922717 11.736957,27.5807963 14.2686567,27.5807963 C16.8003565,27.5807963 20.385289,27.5807963 25.0234542,27.5807963 C27.5366027,27.1053132 28.793177,25.5877488 28.793177,23.028103 C28.4996058,19.8805621 26.965846,18.3067916 24.1918977,18.3067916 C21.4179493,18.3067916 19.8841895,19.8805621 19.5906183,23.028103 L13.880597,17.0702576 C16.6871724,13.0234192 20.1242726,11 24.1918977,11 C32.0639659,11.7556352 36,15.8961505 36,23.4215457 C34.9282161,30.9906323 31.3063255,34.8126464 25.1343284,34.8875878 C18.9623312,34.9625293 13.9175551,35 10,35 Z" id="Path-16" fill="#0DBDFF"></path>
+        </g>
+    </g>
+</svg>

@@ -2,12 +2,12 @@
 
 session_start();
 
-$mysqli = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist') or die($mysqli->error);
+$conn = new mysqli('localhost','cwgshosting_codegeist','codegeist20','cwgshosting_codegeist');
 
-$id = 0;
-$update = false;
-$name = '';
-$location = '';
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
 
 if (isset($_POST['save'])){
     $name = $_POST['name'];
@@ -25,7 +25,7 @@ if (isset($_POST['save'])){
 
 if (isset($_GET['delete'])){
     $id = $_GET['delete'];
-    $mysqli->query("DELETE FROM equipments WHERE id=$id") or die($mysqli->error());
+    $mysqli->query("DELETE FROM equipmetns WHERE id=$id") or die($mysqli->error());
     
     $_SESSION['message'] = "Record has been deleted!";
     $_SESSION['msg_type'] = "danger";
@@ -33,7 +33,7 @@ if (isset($_GET['delete'])){
     header("location: resources.php");
 }
 
-if (isset($_GET['edit'])){
+if (isset($_GET['edit1'])){
     $id = $_GET['edit'];
     $update = true;
     $result = $mysqli->query("SELECT * FROM equipments WHERE id=$id") or die($mysqli->error());
@@ -50,23 +50,45 @@ if (isset($_GET['edit'])){
     }
 }
 
-if (isset($_POST['update'])){
+if (isset($_POST['update1'])){
+    
     $id = $_POST['id'];
-//    $employeeno = $_POST['employeenum'];
-//    $employeename = $_POST['employeename'];
-//    $joblocation = $_POST['joblocation'];
-//    $dateofjoin = $_POST['dateofjoin'];
-//    $contactnumber = $_POST['contactnumber'];
-//    $designation = $_POST['designation'];
-//    $status = $_POST['status'];
-    $mysqli->query("UPDATE equipments SET employeeno='$employeenum' , employeename='$employeename', joblocation='$joblocation', dateofjoin='$dateofjoin', contactnumber='$contactnumber', designation='$designation', status='$status' WHERE id=$id") or
-            die($mysqli->error);
+    $purpose = $_POST['purpose'];
+    $joblocation = $_POST['joblocation'];
+    $equipmentneed = $_POST['equipmentneed'];
+    $availableequip = $_POST['availableequip'];
+    $sql = "UPDATE equipments SET purpose='$purpose' , joblocation='$joblocation', equipmentneed='$equipmentneed', availableequip='$availableequip' WHERE id='$id'";
+       
+ if (mysqli_query($conn, $sql)) {
+     $_SESSION['message'] = "Record has been updated!";
+  header('location: resources.php');
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+$conn->close();  
     
-    $_SESSION['message'] = "Record has been updated!";
-    $_SESSION['msg_type'] = "warning";
     
-    header('location: resources.php');
 }
 
+
+if (isset($_POST['update2'])){
+
+    $id = $_POST['id'];
+    $sun = $_POST['sun'];
+    $mon = $_POST['mon'];
+    $tue = $_POST['tue'];
+    $wed = $_POST['wed'];
+    $thu = $_POST['thu'];
+    $fri = $_POST['fri'];
+    $sat = $_POST['sat'];
+    $sql = "UPDATE equipments SET sun='$sun', mon='$mon', tue='$tue', wed='$wed', thu='$thu',fri='$fri', sat='$sat' WHERE id='$id'";
+       
+ if (mysqli_query($conn, $sql)) {
+   $_SESSION['message'] = "Record has been updated!";
+  header('location: resources.php');
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+}
             
 ?>

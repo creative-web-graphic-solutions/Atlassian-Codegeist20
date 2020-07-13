@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> IIM</title>
+    <style>
+	.padFix {
+		padding-top: 8px;
+        padding-right: 10px;
+	}
+	table {
+		font-size:14px;
+	}
+</style>
+</head>        
+<body>
+    <ncy-breadcrumb></ncy-breadcrumb>
+<div ui-view>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-sm-9">
+                            <ul class="nav nav-pills">
+                                <li role="presentation" ng-class="{ 'active': MyOpenTicketsTabActive }"><a ng-click="getMyOpenTickets()">My Open Tickets</a></li>
+                                <li role="presentation" ng-class="{ 'active': MyClosedTicketsTabActive }"><a ng-click="getMyClosedTickets()">My Closed Tickets</a></li>
+                                <li role="presentation" ng-class="{ 'active': OrgOpenTicketsTabActive }"><a ng-click="getOrgOpenTickets()" ng-show="settings.Features.EnableOrganizationTickets && ShowOrgticketsTab && (!UserInfo.portalLimitOrgTickets)">Organization Open Tickets</a></li>
+                                <li role="presentation" ng-class="{ 'active': OrgClosedTicketsTabActive }"><a ng-click="getOrgClosedTickets()" ng-show="settings.Features.EnableOrganizationTickets && ShowOrgticketsTab && (!UserInfo.portalLimitOrgTickets)">Organization Closed Tickets</a></li>
+                                <li role="presentation" ng-class="{ 'active': AllTicketsTabActive }"><a ng-click="getAllTickets()" ng-show="settings.Features.EnableOrganizationTickets && ShowOrgticketsTab && (!UserInfo.portalLimitOrgTickets)">All Tickets</a></li>
+                                <!--<li role="presentation" ng-class="{ 'active': MyTicketsTabActive }"><a ng-click="getMyTickets()">My Open Tickets</a></li>
+                                <li role="presentation" ng-class="{ 'active': OrgTicketsTabActive }"><a ng-click="getOrgTickets()" ng-show="settings.Features.EnableOrganizationTickets && ShowOrgticketsTab && (!UserInfo.portalLimitOrgTickets)">Organization Open Tickets</a></li>
+                                <li role="presentation" ng-class="{ 'active': ClosedTicketsTabActive }"><a ng-click="getAllClosedTickets()">All Closed Tickets</a></li>-->
+                            </ul>
+						</div>
+						<div class="col-sm-3 pull-right">
+							<form role="search" method="get" action="/tbl">
+								<input type="text" name="criteria" class="form-control" ng-model="search" value="" placeholder="Search Ticket Grid">
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+                                <td ng-repeat="Column in Columns">
+                                    <a ng-click="sortColumn(Column.FieldText)">{{Column.FieldText}}</a>
+                                </td>
+							</tr>
+						</thead>
+						<tbody>
+                            <tr ng-repeat="ticket in MyTicketData | orderBy:orderByField:reverseSort | filter:search">
+                                <td ng-repeat="(key,prop) in ticket track by key" ng-click="loadTicket(ticket.hiddenTicketNumber)" ng-if="!(key.indexOf('hidden') > -1)">{{prop}}</td>
+                            </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>    
+
+</html>
+
+
